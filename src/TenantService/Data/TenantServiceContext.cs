@@ -17,6 +17,7 @@ namespace TenantService.Data
         DbSet<Account> Accounts { get; set; }
         DbSet<Profile> Profiles { get; set; }
         DbSet<Service> Services { get; set; }
+        DbSet<Subscription> Subscriptions { get; set; }
         Task<int> SaveChangesAsync();
     }
 
@@ -37,6 +38,7 @@ namespace TenantService.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         public override int SaveChanges()
         {

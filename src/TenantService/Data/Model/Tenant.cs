@@ -23,7 +23,7 @@ namespace TenantService.Data.Model
 
         public string HostUri { get; set; }
 
-        public ICollection<Service> Services { get; set; } = new HashSet<Service>();
+        public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
 
         public DateTime CreatedOn { get; set; }
 

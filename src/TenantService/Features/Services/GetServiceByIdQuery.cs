@@ -33,9 +33,8 @@ namespace TenantService.Features.Services
             {                
                 return new GetServiceByIdResponse()
                 {
-                    Service = ServiceApiModel.FromService(await _context.Services
-                    .Include(x => x.Tenant)				
-					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
+                    Service = ServiceApiModel.FromService(await _context.Services		
+					.SingleAsync(x=>x.Id == request.Id))
                 };
             }
 

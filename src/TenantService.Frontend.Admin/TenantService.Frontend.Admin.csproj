@@ -291,6 +291,30 @@
     <Content Include="src\app\profiles\profile-master-detail.component.scss">
       <DependentUpon>profile-master-detail.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\services\service-edit-embed.component.html">
+      <DependentUpon>service-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-edit-embed.component.scss">
+      <DependentUpon>service-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-item-embed.component.html">
+      <DependentUpon>service-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-item-embed.component.scss">
+      <DependentUpon>service-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-list-embed.component.html">
+      <DependentUpon>service-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-list-embed.component.scss">
+      <DependentUpon>service-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-master-detail.component.html">
+      <DependentUpon>service-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\services\service-master-detail.component.scss">
+      <DependentUpon>service-master-detail.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
     </Content>
@@ -357,6 +381,54 @@
     <Content Include="src\app\shared\tabs.component.scss">
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\subscriptions\subscription-edit-embed.component.html">
+      <DependentUpon>subscription-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-edit-embed.component.scss">
+      <DependentUpon>subscription-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-item-embed.component.html">
+      <DependentUpon>subscription-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-item-embed.component.scss">
+      <DependentUpon>subscription-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-list-embed.component.html">
+      <DependentUpon>subscription-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-list-embed.component.scss">
+      <DependentUpon>subscription-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-master-detail.component.html">
+      <DependentUpon>subscription-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\subscriptions\subscription-master-detail.component.scss">
+      <DependentUpon>subscription-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-edit-embed.component.html">
+      <DependentUpon>tenant-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-edit-embed.component.scss">
+      <DependentUpon>tenant-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-item-embed.component.html">
+      <DependentUpon>tenant-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-item-embed.component.scss">
+      <DependentUpon>tenant-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-list-embed.component.html">
+      <DependentUpon>tenant-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-list-embed.component.scss">
+      <DependentUpon>tenant-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-master-detail.component.html">
+      <DependentUpon>tenant-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\tenants\tenant-master-detail.component.scss">
+      <DependentUpon>tenant-master-detail.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\users\login.component.html">
       <DependentUpon>login.component.ts</DependentUpon>
     </Content>
@@ -388,22 +460,6 @@
     <Content Include="src\styles\base\entity-list.scss" />
     <Content Include="src\styles\base\select.scss" />
     <Content Include="src\styles\base\view-card.scss" />
-    <Content Include="src\app\services\service-edit-embed.component.scss" />
-    <Content Include="src\app\services\service-edit-embed.component.html" />
-    <Content Include="src\app\services\service-list-embed.component.scss" />
-    <Content Include="src\app\services\service-list-embed.component.html" />
-    <Content Include="src\app\services\service-item-embed.component.scss" />
-    <Content Include="src\app\services\service-item-embed.component.html" />
-    <Content Include="src\app\services\service-master-detail.component.scss" />
-    <Content Include="src\app\services\service-master-detail.component.html" />
-    <Content Include="src\app\tenants\tenant-edit-embed.component.scss" />
-    <Content Include="src\app\tenants\tenant-edit-embed.component.html" />
-    <Content Include="src\app\tenants\tenant-list-embed.component.scss" />
-    <Content Include="src\app\tenants\tenant-list-embed.component.html" />
-    <Content Include="src\app\tenants\tenant-item-embed.component.scss" />
-    <Content Include="src\app\tenants\tenant-item-embed.component.html" />
-    <Content Include="src\app\tenants\tenant-master-detail.component.scss" />
-    <Content Include="src\app\tenants\tenant-master-detail.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -580,6 +636,14 @@
     <TypeScriptCompile Include="src\app\tenants\tenant.service.ts" />
     <TypeScriptCompile Include="src\app\tenants\index.ts" />
     <TypeScriptCompile Include="src\app\tenants\tenant.model.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription.actions.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription.service.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\index.ts" />
+    <TypeScriptCompile Include="src\app\subscriptions\subscription.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

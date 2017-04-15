@@ -30,7 +30,7 @@ namespace TenantService.Features.Services
 
             public async Task<RemoveServiceResponse> Handle(RemoveServiceRequest request)
             {
-                var service = await _context.Services.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
+                var service = await _context.Services.SingleAsync(x=>x.Id == request.Id);
                 service.IsDeleted = true;
                 await _context.SaveChangesAsync();
                 return new RemoveServiceResponse();

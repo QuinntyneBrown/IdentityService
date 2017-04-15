@@ -316,6 +316,13 @@
     <Compile Include="Features\Services\RemoveServiceCommand.cs" />
     <Compile Include="Features\Services\ServiceApiModel.cs" />
     <Compile Include="Features\Services\ServiceController.cs" />
+    <Compile Include="Data\Model\Subscription.cs" />
+    <Compile Include="Features\Subscriptions\AddOrUpdateSubscriptionCommand.cs" />
+    <Compile Include="Features\Subscriptions\GetSubscriptionsQuery.cs" />
+    <Compile Include="Features\Subscriptions\GetSubscriptionByIdQuery.cs" />
+    <Compile Include="Features\Subscriptions\RemoveSubscriptionCommand.cs" />
+    <Compile Include="Features\Subscriptions\SubscriptionApiModel.cs" />
+    <Compile Include="Features\Subscriptions\SubscriptionController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

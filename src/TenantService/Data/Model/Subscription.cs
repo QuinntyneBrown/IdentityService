@@ -1,24 +1,28 @@
 using System;
+using System.Collections.Generic;
 using TenantService.Data.Helpers;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
 
 namespace TenantService.Data.Model
 {
     [SoftDelete("IsDeleted")]
-    public class Service: ILoggable
+    public class Subscription: ILoggable
     {
         public int Id { get; set; }
         
-		[Index("NameIndex", IsUnique = false)]
+		[ForeignKey("Tenant")]
+        public int? TenantId { get; set; }
+
+        [ForeignKey("Service")]
+        public int? ServiceId { get; set; }
+
+        [Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
 
-        public string Url { get; set; }
+        public DateTime EffectiveDate { get; set; }
 
-        public string Description { get; set; }
-
-        public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
+        public DateTime ExpiresOn { get; set; }
 
         public DateTime CreatedOn { get; set; }
         
@@ -28,6 +32,10 @@ namespace TenantService.Data.Model
         
 		public string LastModifiedBy { get; set; }
         
-		public bool IsDeleted { get; set; }        
+		public bool IsDeleted { get; set; }
+
+        public virtual Service Service { get; set; }
+
+        public virtual Tenant Tenant { get; set; }
     }
 }

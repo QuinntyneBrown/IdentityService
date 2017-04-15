@@ -31,12 +31,11 @@ namespace TenantService.Features.Services
             public async Task<AddOrUpdateServiceResponse> Handle(AddOrUpdateServiceRequest request)
             {
                 var entity = await _context.Services
-                    .Include(x => x.Tenant)
-                    .SingleOrDefaultAsync(x => x.Id == request.Service.Id && x.Tenant.UniqueId == request.TenantUniqueId);
+                    .SingleOrDefaultAsync(x => x.Id == request.Service.Id);
                 
                 if (entity == null) {
                     var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
-                    _context.Services.Add(entity = new Service() { TenantId = tenant.Id });
+                    _context.Services.Add(entity = new Service() { });
                 }
 
                 entity.Name = request.Service.Name;

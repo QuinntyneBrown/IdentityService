@@ -13,7 +13,6 @@ namespace TenantService.Features.Services
         {
             var model = new TModel();
             model.Id = service.Id;
-            model.TenantId = service.TenantId;
             model.Name = service.Name;
             return model;
         }

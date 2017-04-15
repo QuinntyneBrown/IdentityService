@@ -31,8 +31,6 @@ namespace TenantService.Features.Services
             public async Task<GetServicesResponse> Handle(GetServicesRequest request)
             {
                 var services = await _context.Services
-                    .Include(x => x.Tenant)
-                    .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
                 return new GetServicesResponse()
