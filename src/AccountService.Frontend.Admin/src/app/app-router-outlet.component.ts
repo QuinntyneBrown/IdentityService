@@ -12,7 +12,9 @@ export class AppRouterOutletComponent extends RouterOutlet {
             { path: "/tab/:tabIndex", name: "tenant-master-detail", authRequired: true },
             { path: "/tenant/edit/:tenantId/tab/:tabIndex", name: "tenant-master-detail", authRequired: true },
             { path: "/tenant/edit/:tenantId", name: "tenant-master-detail", authRequired: true },
-            
+            { path: "/accounts", name: "account-master-detail", authRequired: true },
+            { path: "/subscriptions", name: "subscription-master-detail", authRequired: true },
+            { path: "/features", name: "feature-master-detail", authRequired: true },
             { path: "/login", name: "login" },
             { path: "/error", name: "error" },
             { path: "*", name: "not-found" }

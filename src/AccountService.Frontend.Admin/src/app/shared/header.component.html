@@ -1,6 +1,10 @@
 <div class="container">
     <div class="header-left">
-        <h1>Event Service</h1>
+        <h1>Account Service</h1>        
+        <ce-link routesegments='["accounts"]' class="accounts" route-name="account-master-detail" auth-required>accounts</ce-link>
+        <ce-link routesegments='["features"]' class="features" route-name="feature-master-detail" auth-required>features</ce-link>
+        <ce-link routesegments='["subscriptions"]' class="subscriptions" route-name="subscription-master-detail" auth-required>subscriptions</ce-link>
+        <ce-link routesegments='[""]' class="tenants" route-name="tenant-master-detail" auth-required>tenants</ce-link>
     </div>
     <div class="header-right">
         <ce-link routesegments='["login"]' class="logout" auth-required>logout</ce-link>

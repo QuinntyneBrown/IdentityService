@@ -1,10 +1,10 @@
-import { Service } from "./service.model";
-import {  ServiceDelete, ServiceEdit, ServiceAdd } from "./service.actions";
+import { Feature } from "./feature.model";
+import {  FeatureDelete, FeatureEdit, FeatureAdd } from "./feature.actions";
 	
-const template = require("./service-item-embed.component.html");
-const styles = require("./service-item-embed.component.scss");
+const template = require("./feature-item-embed.component.html");
+const styles = require("./feature-item-embed.component.scss");
 
-export class ServiceItemEmbedComponent extends HTMLElement {
+export class FeatureItemEmbedComponent extends HTMLElement {
     constructor() {
         super();
 
@@ -40,11 +40,11 @@ export class ServiceItemEmbedComponent extends HTMLElement {
     }
 
     private async _onDeleteClick(e:Event) {
-        this.dispatchEvent(new ServiceDelete(this.entity)); 
+        this.dispatchEvent(new FeatureDelete(this.entity)); 
     }
 
     private _onEditClick() {
-        this.dispatchEvent(new ServiceEdit(this.entity));
+        this.dispatchEvent(new FeatureEdit(this.entity));
     }
 
     private _onViewClick() {
@@ -63,7 +63,7 @@ export class ServiceItemEmbedComponent extends HTMLElement {
     private get _deleteLinkElement() { return this.querySelector(".entity-item-delete") as HTMLElement; }
     private get _editLinkElement() { return this.querySelector(".entity-item-edit") as HTMLElement; }
     private get _viewLinkElement() { return this.querySelector(".entity-item-view") as HTMLElement; }
-    public entity: Service;
+    public entity: Feature;
 }
 
-customElements.define(`ce-service-item-embed`,ServiceItemEmbedComponent);
+customElements.define(`ce-feature-item-embed`,FeatureItemEmbedComponent);

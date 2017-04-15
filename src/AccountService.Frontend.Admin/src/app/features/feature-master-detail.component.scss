@@ -1,11 +1,11 @@
 @import "../../styles/base/_all";
 
-ce-service-master-detail {
+ce-feature-master-detail {
     display:block;
 	@extend .view-card;
 
-    ce-service-edit-embed,
-    ce-service-list-embed {
+    ce-feature-edit-embed,
+    ce-feature-list-embed {
         float:left;
         display:inline-block;
         position:relative;
@@ -13,7 +13,7 @@ ce-service-master-detail {
     }
 }
 
-ce-service-master-detail::after {
+ce-feature-master-detail::after {
     clear:both;
     display:block;
     content:" ";

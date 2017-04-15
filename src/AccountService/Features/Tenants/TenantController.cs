@@ -1,10 +1,8 @@
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using AccountService.Features.Core;
+
 using static AccountService.Features.Tenants.AddOrUpdateTenantCommand;
 using static AccountService.Features.Tenants.GetTenantsQuery;
 using static AccountService.Features.Tenants.GetTenantByIdQuery;
@@ -26,7 +24,6 @@ namespace AccountService.Features.Tenants
         [ResponseType(typeof(AddOrUpdateTenantResponse))]
         public async Task<IHttpActionResult> Add(AddOrUpdateTenantRequest request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -35,7 +32,6 @@ namespace AccountService.Features.Tenants
         [ResponseType(typeof(AddOrUpdateTenantResponse))]
         public async Task<IHttpActionResult> Update(AddOrUpdateTenantRequest request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
         
@@ -46,7 +42,6 @@ namespace AccountService.Features.Tenants
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetTenantsRequest();
-            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -55,7 +50,6 @@ namespace AccountService.Features.Tenants
         [ResponseType(typeof(GetTenantByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]GetTenantByIdRequest request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -64,7 +58,6 @@ namespace AccountService.Features.Tenants
         [ResponseType(typeof(RemoveTenantResponse))]
         public async Task<IHttpActionResult> Remove([FromUri]RemoveTenantRequest request)
         {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 

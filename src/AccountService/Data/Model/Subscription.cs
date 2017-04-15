@@ -13,8 +13,8 @@ namespace AccountService.Data.Model
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
 
-        [ForeignKey("Service")]
-        public int? ServiceId { get; set; }
+        [ForeignKey("Feature")]
+        public int? FeatureId { get; set; }
 
         [Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
@@ -34,7 +34,7 @@ namespace AccountService.Data.Model
         
 		public bool IsDeleted { get; set; }
 
-        public virtual Service Service { get; set; }
+        public virtual Feature Feature { get; set; }
 
         public virtual Tenant Tenant { get; set; }
     }

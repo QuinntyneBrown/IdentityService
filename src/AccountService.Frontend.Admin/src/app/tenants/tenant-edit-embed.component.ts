@@ -27,13 +27,14 @@ export class TenantEditEmbedComponent extends HTMLElement {
     }
     
     private async _bind() {
-        this._titleElement.textContent = this.tenant ? "Edit Tenant": "Create Tenant";
+        this._titleElement.textContent = (this.tenant && this.tenant.id) ? `Edit Tenant: ${this.tenant.name}`: "Create Tenant";
 
-        if (this.tenant) {                
-            this._nameInputElement.value = this.tenant.name;  
-        } else {
-            this._deleteButtonElement.style.display = "none";
-        }     
+        this._nameInputElement.value = this.tenant.name;
+        this._hostUrlInputElement.value = this.tenant.hostUrl;
+        this._uniqueIdInputElement.value = this.tenant.uniqueId; 
+
+        if (!this.tenant.id)           
+            this._deleteButtonElement.style.display = "none";  
     }
 
     private _setEventListeners() {
@@ -51,7 +52,9 @@ export class TenantEditEmbedComponent extends HTMLElement {
     public onSave() {
         const tenant = {
             id: this.tenant != null ? this.tenant.id : null,
-            name: this._nameInputElement.value
+            name: this._nameInputElement.value,
+            hostUrl: this._hostUrlInputElement.value,
+            uniqueId: this._uniqueIdInputElement.value
         } as Tenant;
         
         this.dispatchEvent(new TenantAdd(tenant));            
@@ -64,7 +67,9 @@ export class TenantEditEmbedComponent extends HTMLElement {
     public onDelete() {        
         const tenant = {
             id: this.tenant != null ? this.tenant.id : null,
-            name: this._nameInputElement.value
+            name: this._nameInputElement.value,
+            hostUrl: this._hostUrlInputElement.value,
+            uniqueId: this._uniqueIdInputElement.value
         } as Tenant;
 
         this.dispatchEvent(new TenantDelete(tenant));         
@@ -80,7 +85,9 @@ export class TenantEditEmbedComponent extends HTMLElement {
                 if (this.parentNode) {
                     this.tenantId = this.tenant.id;
                     this._nameInputElement.value = this.tenant.name != undefined ? this.tenant.name : "";
-                    this._titleElement.textContent = this.tenantId ? "Edit Tenant" : "Create Tenant";
+                    this._hostUrlInputElement.value = this.tenant.hostUrl != undefined ? this.tenant.hostUrl : "";
+                    this._uniqueIdInputElement.value = this.tenant.uniqueId != undefined ? this.tenant.uniqueId : "";
+                    this._titleElement.textContent = this.tenantId ? `Edit Tenant: ${this.tenant.name}` : "Create Tenant";
                 }
                 break;
         }           
@@ -88,7 +95,7 @@ export class TenantEditEmbedComponent extends HTMLElement {
 
     public tenantId: any;
     
-	public tenant: Tenant;
+    public tenant: Tenant = new Tenant();
     
     private get _createButtonElement(): HTMLElement { return this.querySelector(".tenant-create") as HTMLElement; }
     
@@ -98,7 +105,12 @@ export class TenantEditEmbedComponent extends HTMLElement {
     
 	private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     
-	private get _nameInputElement(): HTMLInputElement { return this.querySelector(".tenant-name") as HTMLInputElement;}
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".tenant-name") as HTMLInputElement; }
+
+    private get _uniqueIdInputElement(): HTMLInputElement { return this.querySelector(".tenant-unique-id") as HTMLInputElement; }
+
+    private get _hostUrlInputElement(): HTMLInputElement { return this.querySelector(".tenant-host-url") as HTMLInputElement; }
+
 }
 
 customElements.define(`ce-tenant-edit-embed`,TenantEditEmbedComponent);

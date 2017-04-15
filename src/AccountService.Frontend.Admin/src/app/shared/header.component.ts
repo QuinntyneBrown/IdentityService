@@ -39,7 +39,6 @@ export class HeaderComponent extends HTMLElement {
     }
 
     private _onLogoutClick() {
-        alert("?");
         this._storage.put({ name: TOKEN_KEY, value: null });
     }
 

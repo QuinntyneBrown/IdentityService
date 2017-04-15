@@ -1,11 +1,11 @@
-import { Service } from "./service.model";
+import { Feature } from "./feature.model";
 import { EditorComponent } from "../shared";
-import {  ServiceDelete, ServiceEdit, ServiceAdd } from "./service.actions";
+import {  FeatureDelete, FeatureEdit, FeatureAdd } from "./feature.actions";
 
-const template = require("./service-edit-embed.component.html");
-const styles = require("./service-edit-embed.component.scss");
+const template = require("./feature-edit-embed.component.html");
+const styles = require("./feature-edit-embed.component.scss");
 
-export class ServiceEditEmbedComponent extends HTMLElement {
+export class FeatureEditEmbedComponent extends HTMLElement {
     constructor() {
         super();
         this.onSave = this.onSave.bind(this);
@@ -15,8 +15,8 @@ export class ServiceEditEmbedComponent extends HTMLElement {
 
     static get observedAttributes() {
         return [
-            "service",
-            "service-id"
+            "feature",
+            "feature-id"
         ];
     }
     
@@ -27,10 +27,10 @@ export class ServiceEditEmbedComponent extends HTMLElement {
     }
     
     private async _bind() {
-        this._titleElement.textContent = this.service ? "Edit Service": "Create Service";
+        this._titleElement.textContent = this.feature ? "Edit Feature": "Create Feature";
 
-        if (this.service) {                
-            this._nameInputElement.value = this.service.name;  
+        if (this.feature) {                
+            this._nameInputElement.value = this.feature.name;  
         } else {
             this._deleteButtonElement.style.display = "none";
         }     
@@ -49,48 +49,48 @@ export class ServiceEditEmbedComponent extends HTMLElement {
     }
 
     public onSave() {
-        const service = {
-            id: this.service != null ? this.service.id : null,
+        const feature = {
+            id: this.feature != null ? this.feature.id : null,
             name: this._nameInputElement.value
-        } as Service;
+        } as Feature;
         
-        this.dispatchEvent(new ServiceAdd(service));            
+        this.dispatchEvent(new FeatureAdd(feature));            
     }
 
     public onCreate() {        
-        this.dispatchEvent(new ServiceEdit(new Service()));            
+        this.dispatchEvent(new FeatureEdit(new Feature()));            
     }
 
     public onDelete() {        
-        const service = {
-            id: this.service != null ? this.service.id : null,
+        const feature = {
+            id: this.feature != null ? this.feature.id : null,
             name: this._nameInputElement.value
-        } as Service;
+        } as Feature;
 
-        this.dispatchEvent(new ServiceDelete(service));         
+        this.dispatchEvent(new FeatureDelete(feature));         
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
-            case "service-id":
-                this.serviceId = newValue;
+            case "feature-id":
+                this.featureId = newValue;
                 break;
-            case "service":
-                this.service = JSON.parse(newValue);
+            case "feature":
+                this.feature = JSON.parse(newValue);
                 if (this.parentNode) {
-                    this.serviceId = this.service.id;
-                    this._nameInputElement.value = this.service.name != undefined ? this.service.name : "";
-                    this._titleElement.textContent = this.serviceId ? "Edit Service" : "Create Service";
+                    this.featureId = this.feature.id;
+                    this._nameInputElement.value = this.feature.name != undefined ? this.feature.name : "";
+                    this._titleElement.textContent = this.featureId ? "Edit Feature" : "Create Feature";
                 }
                 break;
         }           
     }
 
-    public serviceId: any;
+    public featureId: any;
     
-	public service: Service;
+	public feature: Feature;
     
-    private get _createButtonElement(): HTMLElement { return this.querySelector(".service-create") as HTMLElement; }
+    private get _createButtonElement(): HTMLElement { return this.querySelector(".feature-create") as HTMLElement; }
     
 	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     
@@ -98,7 +98,7 @@ export class ServiceEditEmbedComponent extends HTMLElement {
     
 	private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     
-	private get _nameInputElement(): HTMLInputElement { return this.querySelector(".service-name") as HTMLInputElement;}
+	private get _nameInputElement(): HTMLInputElement { return this.querySelector(".feature-name") as HTMLInputElement;}
 }
 
-customElements.define(`ce-service-edit-embed`,ServiceEditEmbedComponent);
+customElements.define(`ce-feature-edit-embed`,FeatureEditEmbedComponent);

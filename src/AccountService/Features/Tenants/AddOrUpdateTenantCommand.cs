@@ -1,11 +1,9 @@
-using MediatR;
 using AccountService.Data;
 using AccountService.Data.Model;
 using AccountService.Features.Core;
+using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace AccountService.Features.Tenants
@@ -15,7 +13,6 @@ namespace AccountService.Features.Tenants
         public class AddOrUpdateTenantRequest : IRequest<AddOrUpdateTenantResponse>
         {
             public TenantApiModel Tenant { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
         public class AddOrUpdateTenantResponse { }
@@ -33,13 +30,16 @@ namespace AccountService.Features.Tenants
                 var entity = await _context.Tenants                    
                     .SingleOrDefaultAsync(x => x.Id == request.Tenant.Id);
                 
-                if (entity == null) {
-                    var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
+                if (entity == null) {                    
                     _context.Tenants.Add(entity = new Tenant() { });
                 }
 
                 entity.Name = request.Tenant.Name;
-                
+
+                entity.HostUrl = request.Tenant.HostUrl;
+
+                entity.UniqueId = new Guid(request.Tenant.UniqueId);
+
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateTenantResponse();
@@ -48,7 +48,5 @@ namespace AccountService.Features.Tenants
             private readonly AccountServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

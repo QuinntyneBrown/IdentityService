@@ -21,9 +21,7 @@ namespace AccountService.Data.Model
         [StringLength(MaxStringLength)]
         public string Name { get; set; }
 
-        public string HostUri { get; set; }
-
-        public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
+        public string HostUrl { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

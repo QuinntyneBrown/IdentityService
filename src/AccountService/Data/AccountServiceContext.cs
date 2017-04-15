@@ -16,7 +16,7 @@ namespace AccountService.Data
         DbSet<DigitalAsset> DigitalAssets { get; set; }        
         DbSet<Account> Accounts { get; set; }
         DbSet<Profile> Profiles { get; set; }
-        DbSet<Service> Services { get; set; }
+        DbSet<Feature> Features { get; set; }
         DbSet<Subscription> Subscriptions { get; set; }
         Task<int> SaveChangesAsync();
     }
@@ -37,7 +37,7 @@ namespace AccountService.Data
         public DbSet<DigitalAsset> DigitalAssets { get; set; }        
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Service> Services { get; set; }
+        public DbSet<Feature> Features { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
 
         public override int SaveChanges()
