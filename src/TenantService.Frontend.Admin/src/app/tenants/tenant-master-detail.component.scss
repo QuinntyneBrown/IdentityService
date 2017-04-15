@@ -1,0 +1,20 @@
+@import "../../styles/base/_all";
+
+ce-tenant-master-detail {
+    display:block;
+	@extend .view-card;
+
+    ce-tenant-edit-embed,
+    ce-tenant-list-embed {
+        float:left;
+        display:inline-block;
+        position:relative;
+        width:50%;
+    }
+}
+
+ce-tenant-master-detail::after {
+    clear:both;
+    display:block;
+    content:" ";
+}
