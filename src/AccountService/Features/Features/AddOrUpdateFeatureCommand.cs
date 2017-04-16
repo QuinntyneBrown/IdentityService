@@ -33,7 +33,6 @@ namespace AccountService.Features.Features
                     .SingleOrDefaultAsync(x => x.Id == request.Feature.Id);
                 
                 if (entity == null) {
-                    var tenant = await _context.Tenants.SingleAsync();
                     _context.Features.Add(entity = new Feature() { });
                 }
 

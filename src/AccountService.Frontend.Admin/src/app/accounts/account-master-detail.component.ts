@@ -57,9 +57,8 @@ export class AccountMasterDetailComponent extends HTMLElement {
         this.accountEditElement.setAttribute("account", JSON.stringify(e.detail.account));
     }
 
-    public async onAccountDelete(e) {
-
-        await this._accountService.remove(e.detail.account.id);
+    public async onAccountDelete(e) {        
+        await this._accountService.remove({ id: e.detail.account.id });
         this.accounts = await this._accountService.get();
         
         this.accountListElement.setAttribute("accounts", JSON.stringify(this.accounts));

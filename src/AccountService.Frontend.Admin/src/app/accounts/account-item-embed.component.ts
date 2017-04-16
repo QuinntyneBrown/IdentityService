@@ -30,7 +30,7 @@ export class AccountItemEmbedComponent extends HTMLElement {
     }
 
     private _bind() {
-        this._nameElement.textContent = this.entity.name;
+        this._nameElement.textContent = `${this.entity.firstname} ${this.entity.lastname}`;
     }
 
     private _setEventListeners() {

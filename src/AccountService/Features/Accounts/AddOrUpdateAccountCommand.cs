@@ -1,11 +1,9 @@
-using MediatR;
 using AccountService.Data;
 using AccountService.Data.Model;
 using AccountService.Features.Core;
+using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace AccountService.Features.Accounts
