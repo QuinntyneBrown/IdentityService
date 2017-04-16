@@ -37,6 +37,8 @@ namespace AccountService.Features.Accounts
                     _context.Accounts.Add(entity = new Account() { TenantId = tenant.Id });
                 }
 
+                entity.Name = request.Account.Name;
+
                 entity.Firstname = request.Account.Firstname;
 
                 entity.Lastname = request.Account.Lastname;

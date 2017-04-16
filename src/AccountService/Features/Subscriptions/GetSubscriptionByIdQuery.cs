@@ -13,7 +13,6 @@ namespace AccountService.Features.Subscriptions
     {
         public class GetSubscriptionByIdRequest : IRequest<GetSubscriptionByIdResponse> { 
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
         public class GetSubscriptionByIdResponse
@@ -34,8 +33,7 @@ namespace AccountService.Features.Subscriptions
                 return new GetSubscriptionByIdResponse()
                 {
                     Subscription = SubscriptionApiModel.FromSubscription(await _context.Subscriptions
-                    .Include(x => x.Tenant)				
-					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
+					.SingleAsync(x=>x.Id == request.Id))
                 };
             }
 

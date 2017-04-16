@@ -1,11 +1,8 @@
-using MediatR;
 using AccountService.Data;
 using AccountService.Data.Model;
 using AccountService.Features.Core;
-using System;
-using System.Collections.Generic;
+using MediatR;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace AccountService.Features.Features
@@ -46,7 +43,5 @@ namespace AccountService.Features.Features
             private readonly AccountServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

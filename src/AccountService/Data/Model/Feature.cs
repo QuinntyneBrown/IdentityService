@@ -13,8 +13,10 @@ namespace AccountService.Data.Model
 		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
-        
-		public DateTime CreatedOn { get; set; }
+
+        public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
+
+        public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
         

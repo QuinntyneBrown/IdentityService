@@ -26,10 +26,13 @@ export class AccountEditEmbedComponent extends HTMLElement {
     }
     
     private async _bind() {
-        this._titleElement.textContent = this.account ? "Edit Account": "Create Account";
+        this._titleElement.textContent = (this.account && this.account.id) ? `Edit Account: ${this.account.name}`: "Create Account";
 
         if (this.account) {                
-            this._nameInputElement.value = this.account.name;  
+            this._nameInputElement.value = this.account.name;
+            this._firstnameInputElement.value = this.account.firstname;
+            this._lastnameInputElement.value = this.account.lastname;
+            this._emailInputElement.value = this.account.email;  
         } else {
             this._deleteButtonElement.style.display = "none";
         }     
@@ -49,9 +52,9 @@ export class AccountEditEmbedComponent extends HTMLElement {
         const account = {
             id: this.account != null ? this.account.id : null,
             name: this._nameInputElement.value,
-            firstname: this._nameInputElement.value,
-            lastname: this._nameInputElement.value,
-            email: this._nameInputElement.value
+            firstname: this._firstnameInputElement.value,
+            lastname: this._lastnameInputElement.value,
+            email: this._emailInputElement.value
         } as Account;
         
         this.dispatchEvent(new AccountAdd(account));            
@@ -76,13 +79,17 @@ export class AccountEditEmbedComponent extends HTMLElement {
                 if (this.parentNode) {
                     this.accountId = this.account.id;
                     this._nameInputElement.value = this.account.name != undefined ? this.account.name : "";
-                    this._titleElement.textContent = this.accountId ? "Edit Account" : "Create Account";
+                    this._firstnameInputElement.value = this.account.firstname != undefined ? this.account.firstname : "";
+                    this._lastnameInputElement.value = this.account.lastname != undefined ? this.account.lastname: "";
+                    this._emailInputElement.value = this.account.email != undefined ? this.account.email : "";
+                    this._titleElement.textContent = this.accountId ? `Edit Account: ${this.account.name}` : "Create Account";
                 }
                 break;
         }           
     }
 
     public accountId: any;
+
     public account: Account;
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }

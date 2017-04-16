@@ -31,8 +31,6 @@ namespace AccountService.Features.Subscriptions
             public async Task<GetSubscriptionsResponse> Handle(GetSubscriptionsRequest request)
             {
                 var subscriptions = await _context.Subscriptions
-                    .Include(x => x.Tenant)
-                    .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
                 return new GetSubscriptionsResponse()

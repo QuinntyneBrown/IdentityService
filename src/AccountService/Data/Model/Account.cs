@@ -1,6 +1,6 @@
+using AccountService.Data.Helpers;
 using System;
 using System.Collections.Generic;
-using AccountService.Data.Helpers;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AccountService.Data.Model
@@ -24,8 +24,10 @@ namespace AccountService.Data.Model
         public string Email { get; set; }
 
         public ICollection<Profile> Profiles { get; set; } = new HashSet<Profile>();
+
+        public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
         
-		public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
         

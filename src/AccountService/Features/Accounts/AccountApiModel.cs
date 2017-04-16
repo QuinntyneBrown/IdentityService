@@ -10,6 +10,8 @@ namespace AccountService.Features.Accounts
 
         public int? TenantId { get; set; }
 
+        public string Name { get; set; }
+
         public string Firstname { get; set; }
 
         public string Lastname { get; set; }
@@ -24,8 +26,10 @@ namespace AccountService.Features.Accounts
             var model = new TModel();
 
             model.Id = account.Id;
-
+            
             model.TenantId = account.TenantId;
+
+            model.Name = account.Name;
 
             model.Firstname = account.Firstname;
 

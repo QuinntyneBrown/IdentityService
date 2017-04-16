@@ -10,8 +10,8 @@ namespace AccountService.Data.Model
     {
         public int Id { get; set; }
         
-		[ForeignKey("Tenant")]
-        public int? TenantId { get; set; }
+		[ForeignKey("Account")]
+        public int? AccountId { get; set; }
 
         [ForeignKey("Feature")]
         public int? FeatureId { get; set; }
@@ -36,6 +36,6 @@ namespace AccountService.Data.Model
 
         public virtual Feature Feature { get; set; }
 
-        public virtual Tenant Tenant { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

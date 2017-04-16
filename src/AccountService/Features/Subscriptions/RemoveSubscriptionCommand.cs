@@ -15,7 +15,6 @@ namespace AccountService.Features.Subscriptions
         public class RemoveSubscriptionRequest : IRequest<RemoveSubscriptionResponse>
         {
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; } 
         }
 
         public class RemoveSubscriptionResponse { }
@@ -30,7 +29,7 @@ namespace AccountService.Features.Subscriptions
 
             public async Task<RemoveSubscriptionResponse> Handle(RemoveSubscriptionRequest request)
             {
-                var subscription = await _context.Subscriptions.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
+                var subscription = await _context.Subscriptions.SingleAsync(x=>x.Id == request.Id);
                 subscription.IsDeleted = true;
                 await _context.SaveChangesAsync();
                 return new RemoveSubscriptionResponse();

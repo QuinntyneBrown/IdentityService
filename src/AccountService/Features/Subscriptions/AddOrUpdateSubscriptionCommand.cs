@@ -15,7 +15,6 @@ namespace AccountService.Features.Subscriptions
         public class AddOrUpdateSubscriptionRequest : IRequest<AddOrUpdateSubscriptionResponse>
         {
             public SubscriptionApiModel Subscription { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
         public class AddOrUpdateSubscriptionResponse { }
@@ -31,16 +30,22 @@ namespace AccountService.Features.Subscriptions
             public async Task<AddOrUpdateSubscriptionResponse> Handle(AddOrUpdateSubscriptionRequest request)
             {
                 var entity = await _context.Subscriptions
-                    .Include(x => x.Tenant)
-                    .SingleOrDefaultAsync(x => x.Id == request.Subscription.Id && x.Tenant.UniqueId == request.TenantUniqueId);
+                    .SingleOrDefaultAsync(x => x.Id == request.Subscription.Id);
                 
                 if (entity == null) {
-                    var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
-                    _context.Subscriptions.Add(entity = new Subscription() { TenantId = tenant.Id });
+                    _context.Subscriptions.Add(entity = new Subscription() { });
                 }
 
                 entity.Name = request.Subscription.Name;
-                
+
+                entity.EffectiveDate = request.Subscription.EffectiveDate;
+
+                entity.ExpiresOn = request.Subscription.ExpiresOn;
+
+                entity.FeatureId = request.Subscription.FeatureId;
+
+                entity.AccountId = request.Subscription.AccountId;
+
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateSubscriptionResponse();
