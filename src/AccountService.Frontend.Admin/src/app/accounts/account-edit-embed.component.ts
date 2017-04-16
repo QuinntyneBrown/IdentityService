@@ -1,6 +1,6 @@
 import { Account } from "./account.model";
 import { EditorComponent } from "../shared";
-import {  AccountDelete, AccountEdit, AccountAdd } from "./account.actions";
+import { AccountDelete, AccountEdit, AccountAdd } from "./account.actions";
 
 const template = require("./account-edit-embed.component.html");
 const styles = require("./account-edit-embed.component.scss");
@@ -48,7 +48,10 @@ export class AccountEditEmbedComponent extends HTMLElement {
     public onSave() {
         const account = {
             id: this.account != null ? this.account.id : null,
-            name: this._nameInputElement.value
+            name: this._nameInputElement.value,
+            firstname: this._nameInputElement.value,
+            lastname: this._nameInputElement.value,
+            email: this._nameInputElement.value
         } as Account;
         
         this.dispatchEvent(new AccountAdd(account));            
@@ -83,9 +86,18 @@ export class AccountEditEmbedComponent extends HTMLElement {
     public account: Account;
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
+
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
-    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".account-name") as HTMLInputElement;}
+
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".account-name") as HTMLInputElement; }
+
+    private get _firstnameInputElement(): HTMLInputElement { return this.querySelector(".account-firstname") as HTMLInputElement; }
+
+    private get _lastnameInputElement(): HTMLInputElement { return this.querySelector(".account-lastname") as HTMLInputElement; }
+
+    private get _emailInputElement(): HTMLInputElement { return this.querySelector(".account-email") as HTMLInputElement; }
 }
 
 customElements.define(`ce-account-edit-embed`,AccountEditEmbedComponent);

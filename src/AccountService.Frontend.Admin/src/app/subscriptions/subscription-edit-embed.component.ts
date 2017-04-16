@@ -1,12 +1,17 @@
 import { Subscription } from "./subscription.model";
 import { EditorComponent } from "../shared";
-import {  SubscriptionDelete, SubscriptionEdit, SubscriptionAdd } from "./subscription.actions";
+import { SubscriptionDelete, SubscriptionEdit, SubscriptionAdd } from "./subscription.actions";
+import { FeatureService, Feature } from "../features";
+import { AccountService, Account } from "../accounts";
 
 const template = require("./subscription-edit-embed.component.html");
 const styles = require("./subscription-edit-embed.component.scss");
 
 export class SubscriptionEditEmbedComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _accountService: AccountService = AccountService.Instance,
+        private _featureService: FeatureService = FeatureService.Instance
+    ) {
         super();
         this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
@@ -27,6 +32,29 @@ export class SubscriptionEditEmbedComponent extends HTMLElement {
     }
     
     private async _bind() {
+
+        var resultsArray = await Promise.all([
+            this._accountService.get(),
+            this._featureService.get()
+        ]);
+        
+        this.accounts = resultsArray[0];
+        this.features = resultsArray[1];
+        
+        for (let i = 0; i < this.accounts.length; i++) {
+            let option = document.createElement("option");
+            option.textContent = `${this.accounts[i].firstname}, ${this.accounts[i].lastname}`;
+            option.value = this.accounts[i].id;
+            this._accountSelectElement.appendChild(option);
+        }
+
+        for (let i = 0; i < this.features.length; i++) {
+            let option = document.createElement("option");
+            option.textContent = this.features[i].name;
+            option.value = this.features[i].id;
+            this._featureSelectElement.appendChild(option);
+        }
+
         this._titleElement.textContent = this.subscription ? "Edit Subscription": "Create Subscription";
 
         if (this.subscription) {                
@@ -88,7 +116,15 @@ export class SubscriptionEditEmbedComponent extends HTMLElement {
 
     public subscriptionId: any;
     
-	public subscription: Subscription;
+    public subscription: Subscription;
+
+    public features: Array<Feature> = [];
+
+    public accounts: Array<Account> = [];
+
+    private get _accountSelectElement(): HTMLSelectElement { return this.querySelector(".subscription-account") as HTMLSelectElement; }
+
+    private get _featureSelectElement(): HTMLSelectElement { return this.querySelector(".subscription-feature") as HTMLSelectElement; }
     
     private get _createButtonElement(): HTMLElement { return this.querySelector(".subscription-create") as HTMLElement; }
     
