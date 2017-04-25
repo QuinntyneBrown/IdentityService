@@ -28,7 +28,7 @@ export class HeaderComponent extends HTMLElement {
     }
 
     async bind() {
-        alert(JSON.stringify(this._currentUser.username));
+
     }
 
     private _addEventListeners() {

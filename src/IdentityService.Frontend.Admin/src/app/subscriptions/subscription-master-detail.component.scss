@@ -5,11 +5,19 @@ ce-subscription-master-detail {
 	@extend .view-card;
 
     ce-subscription-edit-embed,
-    ce-subscription-list-embed {
+    ce-subscription-paginated-list-embed {
         float:left;
         display:inline-block;
         position:relative;
-        width:50%;
+        width:calc(50% - 10px);
+    }
+
+    ce-subscription-edit-embed {
+        margin-right:10px;
+    }
+
+    ce-subscription-paginated-list-embed {
+        margin-left:10px;
     }
 }
 

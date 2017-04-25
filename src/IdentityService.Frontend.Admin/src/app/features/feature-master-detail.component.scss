@@ -5,11 +5,19 @@ ce-feature-master-detail {
 	@extend .view-card;
 
     ce-feature-edit-embed,
-    ce-feature-list-embed {
+    ce-feature-paginated-list-embed {
         float:left;
         display:inline-block;
         position:relative;
-        width:50%;
+        width:calc(50% - 10px);
+    }
+
+    ce-feature-edit-embed {
+        margin-right:10px;
+    }
+
+    ce-feature-paginated-list-embed {
+        margin-left:10px;
     }
 }
 

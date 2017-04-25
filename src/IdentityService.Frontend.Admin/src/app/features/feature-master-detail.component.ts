@@ -83,7 +83,7 @@ export class FeatureMasterDetailComponent extends HTMLElement {
     private features: Array<Feature> = [];
     public feature: Feature = <Feature>{};
     public get featureEditElement(): HTMLElement { return this.querySelector("ce-feature-edit-embed") as HTMLElement; }
-    public get featureListElement(): HTMLElement { return this.querySelector("ce-feature-list-embed") as HTMLElement; }
+    public get featureListElement(): HTMLElement { return this.querySelector("ce-feature-paginated-list-embed") as HTMLElement; }
 }
 
 customElements.define(`ce-feature-master-detail`,FeatureMasterDetailComponent);

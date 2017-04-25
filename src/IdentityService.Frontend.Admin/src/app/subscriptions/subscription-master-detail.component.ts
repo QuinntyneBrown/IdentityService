@@ -83,7 +83,7 @@ export class SubscriptionMasterDetailComponent extends HTMLElement {
     private subscriptions: Array<Subscription> = [];
     public subscription: Subscription = <Subscription>{};
     public get subscriptionEditElement(): HTMLElement { return this.querySelector("ce-subscription-edit-embed") as HTMLElement; }
-    public get subscriptionListElement(): HTMLElement { return this.querySelector("ce-subscription-list-embed") as HTMLElement; }
+    public get subscriptionListElement(): HTMLElement { return this.querySelector("ce-subscription-paginated-list-embed") as HTMLElement; }
 }
 
 customElements.define(`ce-subscription-master-detail`,SubscriptionMasterDetailComponent);
