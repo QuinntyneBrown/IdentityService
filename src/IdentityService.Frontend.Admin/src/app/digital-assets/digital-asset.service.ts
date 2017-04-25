@@ -1,5 +1,6 @@
 import { fetch } from "../utilities";
 import { DigitalAsset } from "./digital-asset.model";
+import { environment } from "../environment";
 
 export class DigitalAssetService {
     
@@ -11,13 +12,13 @@ export class DigitalAssetService {
     }
 
     public get() {
-        return fetch({ url: "/api/digitalasset/get" });
+        return fetch({ url: `${environment.baseUrl}api/digitalasset/get` });
     }
 
     public upload(options: {data: FormData}) {
         return fetch({
-            url: "/api/digitalasset/upload",
-            method: "POST",
+            url: `${environment.baseUrl}api/digitalasset/upload`,
+            method: `POST`,
             headers: {},
             authRequired: true,
             data: options.data,
@@ -26,14 +27,14 @@ export class DigitalAssetService {
     }
 
     public getById(id) {
-        return fetch({ url: `/api/digitalasset/getbyid?id=${id}`, authRequired: true });
+        return fetch({ url: `${environment.baseUrl}api/digitalasset/getbyid?id=${id}`, authRequired: true });
     }
 
     public add(digitalAsset) {
-        return fetch({ url: `/api/digitalasset/add`, method: "POST", data: { digitalAsset }, authRequired: true  });
+        return fetch({ url: `${environment.baseUrl}api/digitalasset/add`, method: `POST`, data: { digitalAsset }, authRequired: true  });
     }
 
     public remove(options: { id : number }) {
-        return fetch({ url: `/api/digitalasset/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
+        return fetch({ url: `${environment.baseUrl}api/digitalasset/remove?id=${options.id}`, method: `DELETE`, authRequired: true  });
     }  
 }

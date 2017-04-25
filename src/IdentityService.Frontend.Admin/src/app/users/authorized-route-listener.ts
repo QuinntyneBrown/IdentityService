@@ -31,9 +31,9 @@ export class AuthorizedRouteMiddleware extends RouterMiddleware {
                 if (results == "") {
                     this._storage.put({ name: TOKEN_KEY, value: null });
                     this._router.navigate(["login"]);
-                } else {
-                    const user: User = JSON.parse(results) as User;
-                    this._currentUser.username = user.name;
+                } else {                    
+                    const user: User = JSON.parse(results).user as User;
+                    this._currentUser.username = user.username;
                 }
             });
     }

@@ -11,6 +11,8 @@ export class HeaderComponent extends HTMLElement {
         private _router: Router = Router.Instance,
         private _storage: Storage = Storage.Instance) {
         super();
+
+        this.onCurrentUserChange = this.onCurrentUserChange.bind(this);
     }
 
     static get observedAttributes() {
@@ -35,13 +37,21 @@ export class HeaderComponent extends HTMLElement {
         this._titleElement.addEventListener("click", this._onTitleClick.bind(this));
         this._router.addEventListener(this._onRouteChange.bind(this));
         this._logoutElement.addEventListener("click", this._onLogoutClick.bind(this));
+        this._currentUser.subscribe(this.onCurrentUserChange);
     }
 
-    private _onRouteChange(options: any) {
-        Array.from(this.querySelectorAll("ce-link[auth-required]"))
+    onCurrentUserChange(currentUser:CurrentUser) {
+        if (currentUser != null) {
+            var featureLinkElement = document.querySelector("ce-header .username");
+            featureLinkElement.innerHTML = currentUser.username;
+        }        
+    }
+
+    private _onRouteChange(options: any) {        
+        Array.from(this.querySelectorAll("[auth-required]"))
             .map((e: HTMLElement) => e.style.display = this._router.activatedRoute.authRequired ? "inline-block" : "none");
 
-        Array.from(this.querySelectorAll("ce-link[anonymous-required]"))
+        Array.from(this.querySelectorAll("[anonymous-required]"))
             .map((e: HTMLElement) => e.style.display = this._router.activatedRoute.authRequired ? "none" : "inline-block");
     }
 

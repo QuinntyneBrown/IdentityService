@@ -1,5 +1,6 @@
 import { fetch } from "../utilities";
 import { Profile } from "./profile.model";
+import { environment } from "../environment";
 
 export class ProfileService {
     constructor(private _fetch = fetch) { }
@@ -12,23 +13,23 @@ export class ProfileService {
     }
 
     public get(): Promise<Array<Profile>> {
-        return this._fetch({ url: "/api/profile/get", authRequired: true }).then((results:string) => {
+        return this._fetch({ url: `${environment.baseUrl}api/profile/get`, authRequired: true }).then((results:string) => {
             return (JSON.parse(results) as { profiles: Array<Profile> }).profiles;
         });
     }
 
     public getById(id): Promise<Profile> {
-        return this._fetch({ url: `/api/profile/getbyid?id=${id}`, authRequired: true }).then((results:string) => {
+        return this._fetch({ url: `${environment.baseUrl}api/profile/getbyid?id=${id}`, authRequired: true }).then((results:string) => {
             return (JSON.parse(results) as { profile: Profile }).profile;
         });
     }
 
     public add(profile) {
-        return this._fetch({ url: `/api/profile/add`, method: "POST", data: { profile }, authRequired: true  });
+        return this._fetch({ url: `${environment.baseUrl}api/profile/add`, method: `POST`, data: { profile }, authRequired: true  });
     }
 
     public remove(options: { id : number }) {
-        return this._fetch({ url: `/api/profile/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
+        return this._fetch({ url: `${environment.baseUrl}api/profile/remove?id=${options.id}`, method: `DELETE`, authRequired: true  });
     }
     
 }

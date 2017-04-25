@@ -1,5 +1,6 @@
 import { fetch } from "../utilities";
 import { Feature } from "./feature.model";
+import { environment } from "../environment";
 
 export class FeatureService {
     constructor(private _fetch = fetch) { }
@@ -12,23 +13,23 @@ export class FeatureService {
     }
 
     public get(): Promise<Array<Feature>> {
-        return this._fetch({ url: "/api/feature/get", authRequired: true }).then((results:string) => {
+        return this._fetch({ url: `${environment.baseUrl}api/feature/get`, authRequired: true }).then((results:string) => {
             return (JSON.parse(results) as { features: Array<Feature> }).features;
         });
     }
 
     public getById(id): Promise<Feature> {
-        return this._fetch({ url: `/api/feature/getbyid?id=${id}`, authRequired: true }).then((results:string) => {
+        return this._fetch({ url: `${environment.baseUrl}api/feature/getbyid?id=${id}`, authRequired: true }).then((results:string) => {
             return (JSON.parse(results) as { feature: Feature }).feature;
         });
     }
 
     public add(feature) {
-        return this._fetch({ url: `/api/feature/add`, method: "POST", data: { feature }, authRequired: true  });
+        return this._fetch({ url: `${environment.baseUrl}api/feature/add`, method: `POST`, data: { feature }, authRequired: true  });
     }
 
     public remove(options: { id : number }) {
-        return this._fetch({ url: `/api/feature/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
+        return this._fetch({ url: `${environment.baseUrl}api/feature/remove?id=${options.id}`, method: `DELETE`, authRequired: true  });
     }
     
 }
