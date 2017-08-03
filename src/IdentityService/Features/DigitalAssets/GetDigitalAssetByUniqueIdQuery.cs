@@ -9,17 +9,17 @@ namespace IdentityService.Features.DigitalAssets
 {
     public class GetDigitalAssetByUniqueIdQuery
     {
-        public class GetDigitalAssetByUniqueIdRequest : IRequest<GetDigitalAssetByUniqueIdResponse>
+        public class Request : IRequest<Response>
         {
             public string UniqueId { get; set; }
         }
 
-        public class GetDigitalAssetByUniqueIdResponse
+        public class Response
         {
             public DigitalAssetApiModel DigitalAsset { get; set; }
         }
 
-        public class GetDigitalAssetByUniqueIdHandler : IAsyncRequestHandler<GetDigitalAssetByUniqueIdRequest, GetDigitalAssetByUniqueIdResponse>
+        public class GetDigitalAssetByUniqueIdHandler : IAsyncRequestHandler<Request, Response>
         {
             public GetDigitalAssetByUniqueIdHandler(IdentityServiceContext context, ICache cache)
             {
@@ -27,9 +27,9 @@ namespace IdentityService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<GetDigitalAssetByUniqueIdResponse> Handle(GetDigitalAssetByUniqueIdRequest request)
+            public async Task<Response> Handle(Request request)
             {
-                return new GetDigitalAssetByUniqueIdResponse()
+                return new Response()
                 {
                     DigitalAsset = DigitalAssetApiModel.FromDigitalAsset(await _context.DigitalAssets.SingleAsync(x=>x.UniqueId.ToString() == request.UniqueId))
                 };

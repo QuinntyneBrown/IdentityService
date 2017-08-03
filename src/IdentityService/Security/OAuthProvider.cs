@@ -1,11 +1,10 @@
-using Microsoft.Owin.Security.OAuth;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System;
 using MediatR;
 using Microsoft.Owin;
-using System.Configuration;
+using Microsoft.Owin.Security.OAuth;
+using System;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace IdentityService.Security
 {

@@ -1,7 +1,10 @@
+using IdentityService.Data.Helpers;
 using System;
 using System.Collections.Generic;
-using IdentityService.Data.Helpers;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+using static IdentityService.Constants;
 
 namespace IdentityService.Data.Model
 {
@@ -10,9 +13,12 @@ namespace IdentityService.Data.Model
     {
         public int Id { get; set; }
 
-		[Index("NameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]        
-		public string Name { get; set; }
+		[Index("FeatureNameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(MaxStringLength)]
+        public string Name { get; set; }
+
+        public string Url { get; set; }
 
         public ICollection<Subscription> Subscriptions { get; set; } = new HashSet<Subscription>();
 

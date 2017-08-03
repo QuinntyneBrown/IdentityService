@@ -34,6 +34,8 @@ namespace IdentityService.Features.Features
                 }
 
                 entity.Name = request.Feature.Name;
+
+                entity.Url = request.Feature.Url;
                 
                 await _context.SaveChangesAsync();
 

@@ -1,16 +1,15 @@
+using IdentityService.Features.Core;
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using IdentityService.Features.Core;
-using static IdentityService.Features.Accounts.AddOrUpdateProfileCommand;
-using static IdentityService.Features.Accounts.GetProfilesQuery;
-using static IdentityService.Features.Accounts.GetProfileByIdQuery;
-using static IdentityService.Features.Accounts.RemoveProfileCommand;
 
-namespace IdentityService.Features.Accounts
+using static IdentityService.Features.Profiles.AddOrUpdateProfileCommand;
+using static IdentityService.Features.Profiles.GetProfilesQuery;
+using static IdentityService.Features.Profiles.GetProfileByIdQuery;
+using static IdentityService.Features.Profiles.RemoveProfileCommand;
+
+namespace IdentityService.Features.Profiles
 {
     [Authorize]
     [RoutePrefix("api/profile")]

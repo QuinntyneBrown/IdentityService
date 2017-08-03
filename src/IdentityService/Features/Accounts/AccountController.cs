@@ -1,20 +1,14 @@
+using IdentityService.Features.Core;
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using IdentityService.Features.Core;
-using static IdentityService.Features.Accounts.AddOrUpdateAccountCommand;
-using static IdentityService.Features.Accounts.GetAccountsQuery;
-using static IdentityService.Features.Accounts.GetAccountByIdQuery;
-using static IdentityService.Features.Accounts.RemoveAccountCommand;
 
 namespace IdentityService.Features.Accounts
 {
     [Authorize]
-    [RoutePrefix("api/account")]
-    public class AccountController : ApiController
+    [RoutePrefix("api/accounts")]
+    public class AccountController : BaseApiController
     {
         public AccountController(IMediator mediator)
         {
@@ -23,8 +17,8 @@ namespace IdentityService.Features.Accounts
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateAccountResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateAccountRequest request)
+        [ResponseType(typeof(AddOrUpdateAccountCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateAccountCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -32,8 +26,8 @@ namespace IdentityService.Features.Accounts
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateAccountResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateAccountRequest request)
+        [ResponseType(typeof(AddOrUpdateAccountCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateAccountCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -42,18 +36,18 @@ namespace IdentityService.Features.Accounts
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetAccountsResponse))]
+        [ResponseType(typeof(GetAccountsQuery.Response))]
         public async Task<IHttpActionResult> Get()
         {
-            var request = new GetAccountsRequest();
+            var request = new GetAccountsQuery.Request();
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetAccountByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetAccountByIdRequest request)
+        [ResponseType(typeof(GetAccountByIdQuery.Response))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetAccountByIdQuery.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -61,8 +55,8 @@ namespace IdentityService.Features.Accounts
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveAccountResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveAccountRequest request)
+        [ResponseType(typeof(RemoveAccountCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveAccountCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

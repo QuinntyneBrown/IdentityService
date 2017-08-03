@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
 
-namespace IdentityService.Features.Accounts
+namespace IdentityService.Features.Profiles
 {
     public class GetProfilesQuery
     {

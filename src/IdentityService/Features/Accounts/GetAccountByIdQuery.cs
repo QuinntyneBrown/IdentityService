@@ -1,37 +1,33 @@
-using MediatR;
 using IdentityService.Data;
 using IdentityService.Features.Core;
-using System;
-using System.Collections.Generic;
+using MediatR;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace IdentityService.Features.Accounts
 {
     public class GetAccountByIdQuery
     {
-        public class GetAccountByIdRequest : IRequest<GetAccountByIdResponse> { 
+        public class Request : BaseRequest, IRequest<Response> { 
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
-        public class GetAccountByIdResponse
+        public class Response
         {
             public AccountApiModel Account { get; set; } 
         }
 
-        public class GetAccountByIdHandler : IAsyncRequestHandler<GetAccountByIdRequest, GetAccountByIdResponse>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetAccountByIdHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<GetAccountByIdResponse> Handle(GetAccountByIdRequest request)
+            public async Task<Response> Handle(Request request)
             {                
-                return new GetAccountByIdResponse()
+                return new Response()
                 {
                     Account = AccountApiModel.FromAccount(await _context.Accounts
                     .Include(x => x.Tenant)				

@@ -7,14 +7,14 @@ namespace IdentityService.Features.DigitalAssets
 {
     public class RemoveDigitalAssetCommand
     {
-        public class RemoveDigitalAssetRequest : IRequest<RemoveDigitalAssetResponse>
+        public class Request : IRequest<Response>
         {
             public int Id { get; set; }
         }
 
-        public class RemoveDigitalAssetResponse { }
+        public class Response { }
 
-        public class RemoveDigitalAssetHandler : IAsyncRequestHandler<RemoveDigitalAssetRequest, RemoveDigitalAssetResponse>
+        public class RemoveDigitalAssetHandler : IAsyncRequestHandler<Request, Response>
         {
             public RemoveDigitalAssetHandler(IIdentityServiceContext context, ICache cache)
             {
@@ -22,12 +22,12 @@ namespace IdentityService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<RemoveDigitalAssetResponse> Handle(RemoveDigitalAssetRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var digitalAsset = await _context.DigitalAssets.FindAsync(request.Id);
                 digitalAsset.IsDeleted = true;
                 await _context.SaveChangesAsync();
-                return new RemoveDigitalAssetResponse();
+                return new Response();
             }
 
             private readonly IIdentityServiceContext _context;

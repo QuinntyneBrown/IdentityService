@@ -1,4 +1,5 @@
 using IdentityService.Data.Model;
+using IdentityService.Features.Profiles;
 using System.Collections.Generic;
 using System.Linq;
 

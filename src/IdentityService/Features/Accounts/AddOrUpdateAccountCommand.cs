@@ -10,23 +10,22 @@ namespace IdentityService.Features.Accounts
 {
     public class AddOrUpdateAccountCommand
     {
-        public class AddOrUpdateAccountRequest : IRequest<AddOrUpdateAccountResponse>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public AccountApiModel Account { get; set; }
-            public Guid TenantUniqueId { get; set; }
         }
 
-        public class AddOrUpdateAccountResponse { }
+        public class Response { }
 
-        public class AddOrUpdateAccountHandler : IAsyncRequestHandler<AddOrUpdateAccountRequest, AddOrUpdateAccountResponse>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public AddOrUpdateAccountHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateAccountResponse> Handle(AddOrUpdateAccountRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Accounts
                     .Include(x => x.Tenant)
@@ -47,7 +46,7 @@ namespace IdentityService.Features.Accounts
 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateAccountResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

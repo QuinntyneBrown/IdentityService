@@ -38,9 +38,12 @@ namespace IdentityService
             var mediator = container.Resolve<IMediator>();
             Lazy<IAuthConfiguration> lazyAuthConfiguration = UnityConfiguration.GetContainer().Resolve<Lazy<IAuthConfiguration>>();
 
-            config
-                .EnableSwagger(c => c.SingleApiVersion("v1", "IdentityService"))
-                .EnableSwaggerUi();
+            
+            config.EnableSwagger(c => {
+                c.UseFullTypeNameInSchemaIds();
+                c.SingleApiVersion("v1", "IdentityService");
+            })
+            .EnableSwaggerUi();
 
             app.UseOAuthAuthorizationServer(new OAuthOptions(lazyAuthConfiguration, mediator));
 

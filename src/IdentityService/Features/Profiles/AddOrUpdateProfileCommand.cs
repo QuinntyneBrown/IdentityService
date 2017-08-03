@@ -1,14 +1,12 @@
-using MediatR;
 using IdentityService.Data;
 using IdentityService.Data.Model;
 using IdentityService.Features.Core;
+using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
-namespace IdentityService.Features.Accounts
+namespace IdentityService.Features.Profiles
 {
     public class AddOrUpdateProfileCommand
     {

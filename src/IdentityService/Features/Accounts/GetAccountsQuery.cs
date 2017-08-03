@@ -1,6 +1,6 @@
-using MediatR;
 using IdentityService.Data;
 using IdentityService.Features.Core;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,31 +11,29 @@ namespace IdentityService.Features.Accounts
 {
     public class GetAccountsQuery
     {
-        public class GetAccountsRequest : IRequest<GetAccountsResponse> { 
-            public Guid TenantUniqueId { get; set; }       
-        }
+        public class Request : BaseRequest, IRequest<Response> { }
 
-        public class GetAccountsResponse
+        public class Response
         {
             public ICollection<AccountApiModel> Accounts { get; set; } = new HashSet<AccountApiModel>();
         }
 
-        public class GetAccountsHandler : IAsyncRequestHandler<GetAccountsRequest, GetAccountsResponse>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetAccountsHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<GetAccountsResponse> Handle(GetAccountsRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var accounts = await _context.Accounts
                     .Include(x => x.Tenant)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
-                return new GetAccountsResponse()
+                return new Response()
                 {
                     Accounts = accounts.Select(x => AccountApiModel.FromAccount(x)).ToList()
                 };

@@ -225,6 +225,8 @@
     <Compile Include="Data\Helpers\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Data\Model\ILoggable.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Features\Core\BaseApiController.cs" />
+    <Compile Include="Features\Core\BaseRequest.cs" />
     <Compile Include="Features\Core\Cache.cs" />
     <Compile Include="Features\Core\CacheProvider.cs" />
     <Compile Include="Features\Core\DateExtensions.cs" />
@@ -295,12 +297,12 @@
     <Compile Include="Features\Accounts\RemoveAccountCommand.cs" />
     <Compile Include="Features\Accounts\AccountApiModel.cs" />
     <Compile Include="Features\Accounts\AccountController.cs" />
-    <Compile Include="Features\Accounts\AddOrUpdateProfileCommand.cs" />
-    <Compile Include="Features\Accounts\GetProfilesQuery.cs" />
-    <Compile Include="Features\Accounts\GetProfileByIdQuery.cs" />
-    <Compile Include="Features\Accounts\RemoveProfileCommand.cs" />
-    <Compile Include="Features\Accounts\ProfileApiModel.cs" />
-    <Compile Include="Features\Accounts\ProfileController.cs" />
+    <Compile Include="Features\Profiles\AddOrUpdateProfileCommand.cs" />
+    <Compile Include="Features\Profiles\GetProfilesQuery.cs" />
+    <Compile Include="Features\Profiles\GetProfileByIdQuery.cs" />
+    <Compile Include="Features\Profiles\RemoveProfileCommand.cs" />
+    <Compile Include="Features\Profiles\ProfileApiModel.cs" />
+    <Compile Include="Features\Profiles\ProfileController.cs" />
     <Compile Include="Features\Notifications\SendRegistrationConfirmationCommand.cs" />
     <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
     <Compile Include="Features\Tenants\AddOrUpdateTenantCommand.cs" />

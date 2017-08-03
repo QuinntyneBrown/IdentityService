@@ -12,14 +12,14 @@ namespace IdentityService.Features.DigitalAssets
 {
     public class GetDigitalAssetsQuery
     {
-        public class GetDigitalAssetsRequest : IRequest<GetDigitalAssetsResponse> { }
+        public class Request : IRequest<Response> { }
 
-        public class GetDigitalAssetsResponse
+        public class Response
         {
             public ICollection<DigitalAssetApiModel> DigitalAssets { get; set; } = new HashSet<DigitalAssetApiModel>();
         }
 
-        public class GetDigitalAssetsHandler : IAsyncRequestHandler<GetDigitalAssetsRequest, GetDigitalAssetsResponse>
+        public class GetDigitalAssetsHandler : IAsyncRequestHandler<Request, Response>
         {
             public GetDigitalAssetsHandler(IIdentityServiceContext context, ICache cache)
             {
@@ -27,11 +27,11 @@ namespace IdentityService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<GetDigitalAssetsResponse> Handle(GetDigitalAssetsRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var digitalAssets = await _cache.FromCacheOrServiceAsync<List<DigitalAsset>>(() => _context.DigitalAssets.ToListAsync(), DigitalAssetCacheKeys.DigitalAssets);
 
-                return new GetDigitalAssetsResponse()
+                return new Response()
                 {
                     DigitalAssets = digitalAssets.Select(x => DigitalAssetApiModel.FromDigitalAsset(x)).ToList()
                 };

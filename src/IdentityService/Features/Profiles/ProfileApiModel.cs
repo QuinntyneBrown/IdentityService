@@ -1,6 +1,6 @@
 using IdentityService.Data.Model;
 
-namespace IdentityService.Features.Accounts
+namespace IdentityService.Features.Profiles
 {
     public class ProfileApiModel
     {        

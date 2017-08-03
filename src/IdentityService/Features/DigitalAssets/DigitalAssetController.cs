@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Net.Http.Headers;
-
-using static IdentityService.Features.DigitalAssets.GetDigitalAssetByUniqueIdQuery;
-using static IdentityService.Features.DigitalAssets.AzureBlobStorageDigitalAssetCommand;
+using IdentityService.Features.Core;
 
 namespace IdentityService.Features.DigitalAssets
 {
     [Authorize]
-    [RoutePrefix("api/digitalasset")]
-    public class DigitalAssetController : ApiController
+    [RoutePrefix("api/digitalassets")]
+    public class DigitalAssetController : BaseApiController
     {        
         public DigitalAssetController(IMediator mediator, IUserManager userManager)
         {
@@ -25,40 +23,40 @@ namespace IdentityService.Features.DigitalAssets
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
+        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateDigitalAssetCommand.Request request)
             => Ok(await _mediator.Send(request));
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
+        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateDigitalAssetCommand.Request request)
             => Ok(await _mediator.Send(request));
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetsQuery.GetDigitalAssetsResponse))]
+        [ResponseType(typeof(GetDigitalAssetsQuery.Response))]
         public async Task<IHttpActionResult> Get()
-            => Ok(await _mediator.Send(new GetDigitalAssetsQuery.GetDigitalAssetsRequest()));
+            => Ok(await _mediator.Send(new GetDigitalAssetsQuery.Request()));
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByIdQuery.GetDigitalAssetByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetDigitalAssetByIdQuery.GetDigitalAssetByIdRequest request)
+        [ResponseType(typeof(GetDigitalAssetByIdQuery.Response))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetDigitalAssetByIdQuery.Request request)
             => Ok(await _mediator.Send(request));
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveDigitalAssetCommand.RemoveDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveDigitalAssetCommand.RemoveDigitalAssetRequest request)
+        [ResponseType(typeof(RemoveDigitalAssetCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveDigitalAssetCommand.Request request)
             => Ok(await _mediator.Send(request));
 
         [Route("serve")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByUniqueIdResponse))]
+        [ResponseType(typeof(GetDigitalAssetByUniqueIdQuery.Response))]
         [AllowAnonymous]
-        public async Task<HttpResponseMessage> Serve([FromUri]GetDigitalAssetByUniqueIdRequest request)
+        public async Task<HttpResponseMessage> Serve([FromUri]GetDigitalAssetByUniqueIdQuery.Request request)
         {
             var response = await _mediator.Send(request);
             var result = new HttpResponseMessage(HttpStatusCode.OK);
@@ -75,7 +73,7 @@ namespace IdentityService.Features.DigitalAssets
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             var user = await _userManager.GetUserAsync(User);            
             var provider = await Request.Content.ReadAsMultipartAsync(new InMemoryMultipartFormDataStreamProvider());            
-            return Ok(await _mediator.Send(new AzureBlobStorageDigitalAssetRequest() { Provider = provider, Folder = $"{user.Tenant.UniqueId}" }));
+            return Ok(await _mediator.Send(new AzureBlobStorageDigitalAssetCommand.AzureBlobStorageDigitalAssetRequest() { Provider = provider, Folder = $"{user.Tenant.UniqueId}" }));
         }
 
         protected readonly IMediator _mediator;

@@ -1,7 +1,10 @@
 using IdentityService.Data.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using static IdentityService.Constants;
 
 namespace IdentityService.Data.Model
 {
@@ -13,9 +16,10 @@ namespace IdentityService.Data.Model
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
         
-		[Index("NameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]        
-		public string Name { get; set; }
+		[Index("AccountNameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(MaxStringLength)]
+        public string Name { get; set; }
 
         public string Firstname { get; set; }
 
