@@ -11,15 +11,15 @@ namespace IdentityService.Features.Users
 {
     public class AddOrUpdateUserCommand
     {
-        public class AddOrUpdateUserRequest : IRequest<AddOrUpdateUserResponse>
+        public class Request : IRequest<Response>
         {
             public UserApiModel User { get; set; }
 			public int? TenantId { get; set; }
         }
 
-        public class AddOrUpdateUserResponse { }
+        public class Response { }
 
-        public class AddOrUpdateUserHandler : IAsyncRequestHandler<AddOrUpdateUserRequest, AddOrUpdateUserResponse>
+        public class AddOrUpdateUserHandler : IAsyncRequestHandler<Request, Response>
         {
             public AddOrUpdateUserHandler(IdentityServiceContext context, ICache cache)
             {
@@ -27,7 +27,7 @@ namespace IdentityService.Features.Users
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateUserResponse> Handle(AddOrUpdateUserRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Users
                     .SingleOrDefaultAsync(x => x.Id == request.User.Id && x.TenantId == request.TenantId);
@@ -37,7 +37,7 @@ namespace IdentityService.Features.Users
 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateUserResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

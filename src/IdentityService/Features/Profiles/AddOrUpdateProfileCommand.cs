@@ -10,23 +10,23 @@ namespace IdentityService.Features.Profiles
 {
     public class AddOrUpdateProfileCommand
     {
-        public class AddOrUpdateProfileRequest : IRequest<AddOrUpdateProfileResponse>
+        public class Request : IRequest<Response>
         {
             public ProfileApiModel Profile { get; set; }
             public Guid TenantUniqueId { get; set; }
         }
 
-        public class AddOrUpdateProfileResponse { }
+        public class Response { }
 
-        public class AddOrUpdateProfileHandler : IAsyncRequestHandler<AddOrUpdateProfileRequest, AddOrUpdateProfileResponse>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public AddOrUpdateProfileHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateProfileResponse> Handle(AddOrUpdateProfileRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Profiles
                     .Include(x => x.Tenant)
@@ -41,7 +41,7 @@ namespace IdentityService.Features.Profiles
                 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateProfileResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

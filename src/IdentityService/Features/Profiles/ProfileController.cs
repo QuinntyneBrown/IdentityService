@@ -4,16 +4,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-using static IdentityService.Features.Profiles.AddOrUpdateProfileCommand;
-using static IdentityService.Features.Profiles.GetProfilesQuery;
-using static IdentityService.Features.Profiles.GetProfileByIdQuery;
-using static IdentityService.Features.Profiles.RemoveProfileCommand;
-
 namespace IdentityService.Features.Profiles
 {
     [Authorize]
-    [RoutePrefix("api/profile")]
-    public class ProfileController : ApiController
+    [RoutePrefix("api/profiles")]
+    public class ProfileController : BaseApiController
     {
         public ProfileController(IMediator mediator)
         {
@@ -22,8 +17,8 @@ namespace IdentityService.Features.Profiles
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateProfileResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateProfileRequest request)
+        [ResponseType(typeof(AddOrUpdateProfileCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateProfileCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -31,8 +26,8 @@ namespace IdentityService.Features.Profiles
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateProfileResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateProfileRequest request)
+        [ResponseType(typeof(AddOrUpdateProfileCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateProfileCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -41,18 +36,18 @@ namespace IdentityService.Features.Profiles
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetProfilesResponse))]
+        [ResponseType(typeof(GetProfilesQuery.Response))]
         public async Task<IHttpActionResult> Get()
         {
-            var request = new GetProfilesRequest();
+            var request = new GetProfilesQuery.Request();
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetProfileByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetProfileByIdRequest request)
+        [ResponseType(typeof(GetProfileByIdQuery.Response))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetProfileByIdQuery.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -60,8 +55,8 @@ namespace IdentityService.Features.Profiles
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveProfileResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveProfileRequest request)
+        [ResponseType(typeof(RemoveProfileCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveProfileCommand.Request request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

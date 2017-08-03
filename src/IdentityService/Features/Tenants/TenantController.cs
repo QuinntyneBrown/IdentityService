@@ -3,15 +3,10 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-using static IdentityService.Features.Tenants.AddOrUpdateTenantCommand;
-using static IdentityService.Features.Tenants.GetTenantsQuery;
-using static IdentityService.Features.Tenants.GetTenantByIdQuery;
-using static IdentityService.Features.Tenants.RemoveTenantCommand;
-
 namespace IdentityService.Features.Tenants
 {
     [Authorize]
-    [RoutePrefix("api/tenant")]
+    [RoutePrefix("api/tenants")]
     public class TenantController : ApiController
     {
         public TenantController(IMediator mediator)

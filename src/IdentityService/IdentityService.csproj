@@ -287,7 +287,7 @@
     <Compile Include="Data\Migrations\UserConfiguration.cs" />
     <Compile Include="Data\Migrations\RoleConfiguration.cs" />
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
-    <Compile Include="Features\Users\UserController.cs" />
+    <Compile Include="Features\Users\UsersController.cs" />
     <Compile Include="Data\Model\DigitalAsset.cs" />
     <Compile Include="Data\Model\Account.cs" />
     <Compile Include="Data\Model\Profile.cs" />
@@ -324,7 +324,7 @@
     <Compile Include="Features\Features\GetFeatureByIdQuery.cs" />
     <Compile Include="Features\Features\RemoveFeatureCommand.cs" />
     <Compile Include="Features\Features\FeatureApiModel.cs" />
-    <Compile Include="Features\Features\FeatureController.cs" />
+    <Compile Include="Features\Features\FeaturesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

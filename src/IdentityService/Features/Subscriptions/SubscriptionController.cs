@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using IdentityService.Features.Core;
-using static IdentityService.Features.Subscriptions.AddOrUpdateSubscriptionCommand;
-using static IdentityService.Features.Subscriptions.GetSubscriptionsQuery;
-using static IdentityService.Features.Subscriptions.GetSubscriptionByIdQuery;
-using static IdentityService.Features.Subscriptions.RemoveSubscriptionCommand;
 
 namespace IdentityService.Features.Subscriptions
 {
     [Authorize]
-    [RoutePrefix("api/subscription")]
+    [RoutePrefix("api/subscriptions")]
     public class SubscriptionController : ApiController
     {
         public SubscriptionController(IMediator mediator)

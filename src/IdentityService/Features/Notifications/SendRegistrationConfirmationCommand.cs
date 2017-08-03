@@ -8,14 +8,11 @@ namespace IdentityService.Features.Notifications
 {
     public class SendRegistrationConfirmationCommand
     {
-        public class SendRegistrationConfirmationRequest : IRequest<SendRegistrationConfirmationResponse>
-        {
-            public Guid TenantUniqueId { get; set; }
-        }
+        public class Request : BaseRequest, IRequest<SendRegistrationConfirmationResponse> { }
 
         public class SendRegistrationConfirmationResponse { }
 
-        public class SendRegistrationConfirmationHandler : IAsyncRequestHandler<SendRegistrationConfirmationRequest, SendRegistrationConfirmationResponse>
+        public class SendRegistrationConfirmationHandler : IAsyncRequestHandler<Request, SendRegistrationConfirmationResponse>
         {
             public SendRegistrationConfirmationHandler(IdentityServiceContext context, ICache cache)
             {
@@ -23,7 +20,7 @@ namespace IdentityService.Features.Notifications
                 _cache = cache;
             }
 
-            public async Task<SendRegistrationConfirmationResponse> Handle(SendRegistrationConfirmationRequest request)
+            public async Task<SendRegistrationConfirmationResponse> Handle(Request request)
             {
                 throw new System.NotImplementedException();
             }

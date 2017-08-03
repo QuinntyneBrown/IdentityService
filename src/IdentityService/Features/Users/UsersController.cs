@@ -3,19 +3,14 @@ using MediatR;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using static IdentityService.Features.Users.AddOrUpdateUserCommand;
-using static IdentityService.Features.Users.GetUsersQuery;
-using static IdentityService.Features.Users.GetUserByIdQuery;
-using static IdentityService.Features.Users.RemoveUserCommand;
-using static IdentityService.Features.Users.GetUserByUsernameQuery;
 
 namespace IdentityService.Features.Users
 {
     [Authorize]
-    [RoutePrefix("api/user")]
-    public class UserController : ApiController
+    [RoutePrefix("api/users")]
+    public class UsersController : ApiController
     {
-        public UserController(IMediator mediator, IUserManager userManager)
+        public UsersController(IMediator mediator, IUserManager userManager)
         {
             _mediator = mediator;
             _userManager = userManager;
@@ -23,8 +18,8 @@ namespace IdentityService.Features.Users
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateUserResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateUserRequest request)
+        [ResponseType(typeof(AddOrUpdateUserCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateUserCommand.Request request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));

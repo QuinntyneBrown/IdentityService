@@ -5,18 +5,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using IdentityService.Features.Core;
-using static IdentityService.Features.Features.AddOrUpdateFeatureCommand;
-using static IdentityService.Features.Features.GetFeaturesQuery;
-using static IdentityService.Features.Features.GetFeatureByIdQuery;
-using static IdentityService.Features.Features.RemoveFeatureCommand;
 
 namespace IdentityService.Features.Features
 {
     [Authorize]
-    [RoutePrefix("api/feature")]
-    public class FeatureController : ApiController
+    [RoutePrefix("api/features")]
+    public class FeaturesController : ApiController
     {
-        public FeatureController(IMediator mediator)
+        public FeaturesController(IMediator mediator)
         {
             _mediator = mediator;
         }
