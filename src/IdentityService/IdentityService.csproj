@@ -282,7 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="ClientApp\app\app.component.css" />
+    <Content Include="ClientApp\app\app.component.css">
+      <DependentUpon>app.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\app.component.html" />
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
@@ -308,6 +310,10 @@
       <DependentUpon>tabs.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\tabs.component.html" />
+    <Content Include="ClientApp\styles\edit.css" />
+    <Content Include="ClientApp\styles\forms.css" />
+    <Content Include="ClientApp\styles\list-item.css" />
+    <Content Include="ClientApp\styles\list.css" />
     <Content Include="index.html" />
     <Content Include="webpack.config.js" />
     <Content Include="App.config" />
@@ -442,9 +448,12 @@
     <Compile Include="UnityConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\app\app.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\app.component.ts">
+      <DependentUpon>app.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\app\environments\environment.ts" />
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
@@ -474,13 +483,21 @@
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
+    <TypeScriptCompile Include="ClientApp\app\accounts\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscriptions.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\accounts\accounts.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\features.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenants.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\tenants\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\users\users.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\users\index.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientApp\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="..\..\packages\AWSSDK.S3.3.3.9\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
   </ItemGroup>

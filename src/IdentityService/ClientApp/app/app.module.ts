@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {IncidentsModule} from "../app/incidents";
+
 import {SharedModule} from "../app/shared";
 
 import {AppComponent} from './app.component';
