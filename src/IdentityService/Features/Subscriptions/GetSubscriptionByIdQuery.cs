@@ -20,9 +20,9 @@ namespace IdentityService.Features.Subscriptions
             public SubscriptionApiModel Subscription { get; set; } 
         }
 
-        public class GetSubscriptionByIdHandler : IAsyncRequestHandler<GetSubscriptionByIdRequest, GetSubscriptionByIdResponse>
+        public class Handler : IAsyncRequestHandler<GetSubscriptionByIdRequest, GetSubscriptionByIdResponse>
         {
-            public GetSubscriptionByIdHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;

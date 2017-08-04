@@ -17,9 +17,9 @@ namespace IdentityService.Features.Tenants
 
         public class Response { }
 
-        public class AddOrUpdateTenantHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public AddOrUpdateTenantHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;

@@ -1,0 +1,37 @@
+{
+  "name": "identity-service",
+  "version": "1.0.0-alpha.0",
+  "description": "Identity Service",
+  "main": "index.html",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "author": "Quinntyne Brown",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "4.3.2",
+    "@angular/common": "4.3.2",
+    "@angular/compiler": "4.3.2",
+    "@angular/compiler-cli": "4.3.2",
+    "@angular/core": "4.3.2",
+    "@angular/forms": "4.3.2",
+    "@angular/http": "4.3.2",
+    "@angular/platform-browser": "4.3.2",
+    "@angular/platform-browser-dynamic": "4.3.2",
+    "@angular/platform-server": "4.3.2",
+    "@angular/router": "4.3.2",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "6.0.60",
+    "angular2-template-loader": "0.6.2",
+    "awesome-typescript-loader": "3.2.1",
+    "core-js": "2.4.1",
+    "html-loader": "0.4.5",
+    "live-server": "1.2.0",
+    "raw-loader": "0.5.1",
+    "rxjs": "5.4.2",
+    "typescript": "2.4.0",
+    "webfontloader": "1.6.28",
+    "webpack": "3.1.0",
+    "zone.js": "0.8.12"
+  }
+}

@@ -2,10 +2,7 @@ using MediatR;
 using IdentityService.Data;
 using IdentityService.Data.Model;
 using IdentityService.Features.Core;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace IdentityService.Features.Subscriptions
@@ -19,9 +16,9 @@ namespace IdentityService.Features.Subscriptions
 
         public class Response { }
 
-        public class AddOrUpdateSubscriptionHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public AddOrUpdateSubscriptionHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
@@ -54,7 +51,5 @@ namespace IdentityService.Features.Subscriptions
             private readonly IdentityServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

@@ -12,6 +12,8 @@ namespace IdentityService.Features.Tenants
 
         public string HostUrl { get; set; }
 
+        public string SymetricKey { get; set; }
+
         public static TModel FromTenant<TModel>(Tenant tenant) where
             TModel : TenantApiModel, new()
         {
@@ -24,6 +26,8 @@ namespace IdentityService.Features.Tenants
             model.HostUrl = tenant.HostUrl;
 
             model.UniqueId = $"{tenant.UniqueId}";
+
+            model.SymetricKey = tenant.SymetricKey;
 
             return model;
         }
