@@ -11,17 +11,17 @@ namespace IdentityService.Features.Tenants
 {
     public class GetTenantByIdQuery
     {
-        public class GetTenantByIdRequest : IRequest<GetTenantByIdResponse> { 
+        public class Request : IRequest<Response> { 
             public int Id { get; set; }
             public Guid TenantUniqueId { get; set; }
         }
 
-        public class GetTenantByIdResponse
+        public class Response
         {
             public TenantApiModel Tenant { get; set; } 
         }
 
-        public class GetTenantByIdHandler : IAsyncRequestHandler<GetTenantByIdRequest, GetTenantByIdResponse>
+        public class GetTenantByIdHandler : IAsyncRequestHandler<Request, Response>
         {
             public GetTenantByIdHandler(IdentityServiceContext context, ICache cache)
             {
@@ -29,9 +29,9 @@ namespace IdentityService.Features.Tenants
                 _cache = cache;
             }
 
-            public async Task<GetTenantByIdResponse> Handle(GetTenantByIdRequest request)
+            public async Task<Response> Handle(Request request)
             {                
-                return new GetTenantByIdResponse()
+                return new Response()
                 {
                     Tenant = TenantApiModel.FromTenant(await _context.Tenants                    		
 					.SingleAsync(x=>x.Id == request.Id))

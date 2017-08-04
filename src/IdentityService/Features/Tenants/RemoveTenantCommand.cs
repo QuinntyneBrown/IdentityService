@@ -12,15 +12,15 @@ namespace IdentityService.Features.Tenants
 {
     public class RemoveTenantCommand
     {
-        public class RemoveTenantRequest : IRequest<RemoveTenantResponse>
+        public class Request : IRequest<Response>
         {
             public int Id { get; set; }
             public Guid TenantUniqueId { get; set; } 
         }
 
-        public class RemoveTenantResponse { }
+        public class Response { }
 
-        public class RemoveTenantHandler : IAsyncRequestHandler<RemoveTenantRequest, RemoveTenantResponse>
+        public class RemoveTenantHandler : IAsyncRequestHandler<Request, Response>
         {
             public RemoveTenantHandler(IdentityServiceContext context, ICache cache)
             {
@@ -28,12 +28,12 @@ namespace IdentityService.Features.Tenants
                 _cache = cache;
             }
 
-            public async Task<RemoveTenantResponse> Handle(RemoveTenantRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var tenant = await _context.Tenants.SingleAsync(x=>x.Id == request.Id);
                 tenant.IsDeleted = true;
                 await _context.SaveChangesAsync();
-                return new RemoveTenantResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

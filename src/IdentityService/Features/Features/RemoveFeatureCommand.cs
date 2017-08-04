@@ -12,14 +12,14 @@ namespace IdentityService.Features.Features
 {
     public class RemoveFeatureCommand
     {
-        public class RemoveFeatureRequest : IRequest<RemoveFeatureResponse>
+        public class Request : IRequest<Response>
         {
             public int Id { get; set; }
         }
 
-        public class RemoveFeatureResponse { }
+        public class Response { }
 
-        public class RemoveFeatureHandler : IAsyncRequestHandler<RemoveFeatureRequest, RemoveFeatureResponse>
+        public class RemoveFeatureHandler : IAsyncRequestHandler<Request, Response>
         {
             public RemoveFeatureHandler(IdentityServiceContext context, ICache cache)
             {
@@ -27,12 +27,12 @@ namespace IdentityService.Features.Features
                 _cache = cache;
             }
 
-            public async Task<RemoveFeatureResponse> Handle(RemoveFeatureRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var feature = await _context.Features.SingleAsync(x=>x.Id == request.Id);
                 feature.IsDeleted = true;
                 await _context.SaveChangesAsync();
-                return new RemoveFeatureResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

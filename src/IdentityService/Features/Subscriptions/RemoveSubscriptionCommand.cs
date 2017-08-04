@@ -12,14 +12,14 @@ namespace IdentityService.Features.Subscriptions
 {
     public class RemoveSubscriptionCommand
     {
-        public class RemoveSubscriptionRequest : IRequest<RemoveSubscriptionResponse>
+        public class Request : IRequest<Response>
         {
             public int Id { get; set; }
         }
 
-        public class RemoveSubscriptionResponse { }
+        public class Response { }
 
-        public class RemoveSubscriptionHandler : IAsyncRequestHandler<RemoveSubscriptionRequest, RemoveSubscriptionResponse>
+        public class RemoveSubscriptionHandler : IAsyncRequestHandler<Request, Response>
         {
             public RemoveSubscriptionHandler(IdentityServiceContext context, ICache cache)
             {
@@ -27,12 +27,12 @@ namespace IdentityService.Features.Subscriptions
                 _cache = cache;
             }
 
-            public async Task<RemoveSubscriptionResponse> Handle(RemoveSubscriptionRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var subscription = await _context.Subscriptions.SingleAsync(x=>x.Id == request.Id);
                 subscription.IsDeleted = true;
                 await _context.SaveChangesAsync();
-                return new RemoveSubscriptionResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

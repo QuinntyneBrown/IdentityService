@@ -11,16 +11,16 @@ namespace IdentityService.Features.Features
 {
     public class GetFeaturesQuery
     {
-        public class GetFeaturesRequest : IRequest<GetFeaturesResponse> { 
+        public class Request : IRequest<Response> { 
      
         }
 
-        public class GetFeaturesResponse
+        public class Response
         {
             public ICollection<FeatureApiModel> Features { get; set; } = new HashSet<FeatureApiModel>();
         }
 
-        public class GetFeaturesHandler : IAsyncRequestHandler<GetFeaturesRequest, GetFeaturesResponse>
+        public class GetFeaturesHandler : IAsyncRequestHandler<Request, Response>
         {
             public GetFeaturesHandler(IdentityServiceContext context, ICache cache)
             {
@@ -28,12 +28,12 @@ namespace IdentityService.Features.Features
                 _cache = cache;
             }
 
-            public async Task<GetFeaturesResponse> Handle(GetFeaturesRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var features = await _context.Features
                     .ToListAsync();
 
-                return new GetFeaturesResponse()
+                return new Response()
                 {
                     Features = features.Select(x => FeatureApiModel.FromFeature(x)).ToList()
                 };

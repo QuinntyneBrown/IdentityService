@@ -11,16 +11,16 @@ namespace IdentityService.Features.Subscriptions
 {
     public class GetSubscriptionsQuery
     {
-        public class GetSubscriptionsRequest : IRequest<GetSubscriptionsResponse> { 
+        public class Request : IRequest<Response> { 
             public Guid TenantUniqueId { get; set; }       
         }
 
-        public class GetSubscriptionsResponse
+        public class Response
         {
             public ICollection<SubscriptionApiModel> Subscriptions { get; set; } = new HashSet<SubscriptionApiModel>();
         }
 
-        public class GetSubscriptionsHandler : IAsyncRequestHandler<GetSubscriptionsRequest, GetSubscriptionsResponse>
+        public class GetSubscriptionsHandler : IAsyncRequestHandler<Request, Response>
         {
             public GetSubscriptionsHandler(IdentityServiceContext context, ICache cache)
             {
@@ -28,12 +28,12 @@ namespace IdentityService.Features.Subscriptions
                 _cache = cache;
             }
 
-            public async Task<GetSubscriptionsResponse> Handle(GetSubscriptionsRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var subscriptions = await _context.Subscriptions
                     .ToListAsync();
 
-                return new GetSubscriptionsResponse()
+                return new Response()
                 {
                     Subscriptions = subscriptions.Select(x => SubscriptionApiModel.FromSubscription(x)).ToList()
                 };

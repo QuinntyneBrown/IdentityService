@@ -9,14 +9,14 @@ namespace IdentityService.Features.Features
 {
     public class AddOrUpdateFeatureCommand
     {
-        public class AddOrUpdateFeatureRequest : IRequest<AddOrUpdateFeatureResponse>
+        public class Request : IRequest<Response>
         {
             public FeatureApiModel Feature { get; set; }
         }
 
-        public class AddOrUpdateFeatureResponse { }
+        public class Response { }
 
-        public class AddOrUpdateFeatureHandler : IAsyncRequestHandler<AddOrUpdateFeatureRequest, AddOrUpdateFeatureResponse>
+        public class AddOrUpdateFeatureHandler : IAsyncRequestHandler<Request, Response>
         {
             public AddOrUpdateFeatureHandler(IdentityServiceContext context, ICache cache)
             {
@@ -24,7 +24,7 @@ namespace IdentityService.Features.Features
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateFeatureResponse> Handle(AddOrUpdateFeatureRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Features
                     .SingleOrDefaultAsync(x => x.Id == request.Feature.Id);
@@ -39,7 +39,7 @@ namespace IdentityService.Features.Features
                 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateFeatureResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

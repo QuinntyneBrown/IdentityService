@@ -10,7 +10,7 @@ namespace IdentityService.Features.Subscriptions
 {
     [Authorize]
     [RoutePrefix("api/subscriptions")]
-    public class SubscriptionController : ApiController
+    public class SubscriptionController : BaseApiController
     {
         public SubscriptionController(IMediator mediator)
         {
@@ -19,33 +19,33 @@ namespace IdentityService.Features.Subscriptions
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateSubscriptionResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateSubscriptionRequest request)
+        [ResponseType(typeof(AddOrUpdateSubscriptionCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateSubscriptionCommand.Request request)
             => Ok(await _mediator.Send(request));
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateSubscriptionResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateSubscriptionRequest request)
+        [ResponseType(typeof(AddOrUpdateSubscriptionCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateSubscriptionCommand.Request request)
             => Ok(await _mediator.Send(request));
 
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetSubscriptionsResponse))]
+        [ResponseType(typeof(GetSubscriptionsQuery.Response))]
         public async Task<IHttpActionResult> Get()
-            => Ok(await _mediator.Send(new GetSubscriptionsRequest()));
+            => Ok(await _mediator.Send(new GetSubscriptionsQuery.Request()));
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetSubscriptionByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetSubscriptionByIdRequest request)
+        [ResponseType(typeof(GetSubscriptionByIdQuery.GetSubscriptionByIdResponse))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetSubscriptionByIdQuery.GetSubscriptionByIdRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveSubscriptionResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveSubscriptionRequest request)
+        [ResponseType(typeof(RemoveSubscriptionCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveSubscriptionCommand.Request request)
             => Ok(await _mediator.Send(request));
 
         protected readonly IMediator _mediator;

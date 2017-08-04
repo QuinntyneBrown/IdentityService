@@ -10,14 +10,14 @@ namespace IdentityService.Features.Tenants
 {
     public class AddOrUpdateTenantCommand
     {
-        public class AddOrUpdateTenantRequest : IRequest<AddOrUpdateTenantResponse>
+        public class Request : IRequest<Response>
         {
             public TenantApiModel Tenant { get; set; }
         }
 
-        public class AddOrUpdateTenantResponse { }
+        public class Response { }
 
-        public class AddOrUpdateTenantHandler : IAsyncRequestHandler<AddOrUpdateTenantRequest, AddOrUpdateTenantResponse>
+        public class AddOrUpdateTenantHandler : IAsyncRequestHandler<Request, Response>
         {
             public AddOrUpdateTenantHandler(IdentityServiceContext context, ICache cache)
             {
@@ -25,7 +25,7 @@ namespace IdentityService.Features.Tenants
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateTenantResponse> Handle(AddOrUpdateTenantRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Tenants                    
                     .SingleOrDefaultAsync(x => x.Id == request.Tenant.Id);
@@ -42,7 +42,7 @@ namespace IdentityService.Features.Tenants
 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateTenantResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

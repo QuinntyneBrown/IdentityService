@@ -27,8 +27,8 @@ namespace IdentityService.Features.Users
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateUserResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateUserRequest request)
+        [ResponseType(typeof(AddOrUpdateUserCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateUserCommand.Request request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
@@ -37,8 +37,8 @@ namespace IdentityService.Features.Users
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetUsersResponse))]
-        public async Task<IHttpActionResult> Get([FromUri]GetUsersQuery.GetUsersRequest request)
+        [ResponseType(typeof(GetUsersQuery.Response))]
+        public async Task<IHttpActionResult> Get([FromUri]GetUsersQuery.Request request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
@@ -46,8 +46,8 @@ namespace IdentityService.Features.Users
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetUserByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetUserByIdRequest request)
+        [ResponseType(typeof(GetUserByIdQuery.Response))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetUserByIdQuery.Request request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
@@ -55,8 +55,8 @@ namespace IdentityService.Features.Users
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveUserResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveUserRequest request)
+        [ResponseType(typeof(RemoveUserCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveUserCommand.Request request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
@@ -65,12 +65,12 @@ namespace IdentityService.Features.Users
         [Route("current")]
         [HttpGet]
         [AllowAnonymous]
-        [ResponseType(typeof(GetUserByUsernameResponse))]
+        [ResponseType(typeof(GetUserByUsernameQuery.Response))]
         public async Task<IHttpActionResult> Current()
         {            
             if (!User.Identity.IsAuthenticated)
                 return Ok();
-            var request = new GetUserByUsernameRequest();
+            var request = new GetUserByUsernameQuery.Request();
             request.Username = User.Identity.Name;
             var user = await _userManager.GetUserAsync(User);
             request.TenantId = user.TenantId;

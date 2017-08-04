@@ -12,14 +12,14 @@ namespace IdentityService.Features.Subscriptions
 {
     public class AddOrUpdateSubscriptionCommand
     {
-        public class AddOrUpdateSubscriptionRequest : IRequest<AddOrUpdateSubscriptionResponse>
+        public class Request : IRequest<Response>
         {
             public SubscriptionApiModel Subscription { get; set; }
         }
 
-        public class AddOrUpdateSubscriptionResponse { }
+        public class Response { }
 
-        public class AddOrUpdateSubscriptionHandler : IAsyncRequestHandler<AddOrUpdateSubscriptionRequest, AddOrUpdateSubscriptionResponse>
+        public class AddOrUpdateSubscriptionHandler : IAsyncRequestHandler<Request, Response>
         {
             public AddOrUpdateSubscriptionHandler(IdentityServiceContext context, ICache cache)
             {
@@ -27,7 +27,7 @@ namespace IdentityService.Features.Subscriptions
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateSubscriptionResponse> Handle(AddOrUpdateSubscriptionRequest request)
+            public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Subscriptions
                     .SingleOrDefaultAsync(x => x.Id == request.Subscription.Id);
@@ -48,7 +48,7 @@ namespace IdentityService.Features.Subscriptions
 
                 await _context.SaveChangesAsync();
 
-                return new AddOrUpdateSubscriptionResponse();
+                return new Response();
             }
 
             private readonly IdentityServiceContext _context;

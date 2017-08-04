@@ -1,3 +1,4 @@
+using IdentityService.Features.Core;
 using MediatR;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -7,7 +8,7 @@ namespace IdentityService.Features.Tenants
 {
     [Authorize]
     [RoutePrefix("api/tenants")]
-    public class TenantController : ApiController
+    public class TenantController : BaseApiController
     {
         public TenantController(IMediator mediator)
         {
@@ -16,16 +17,16 @@ namespace IdentityService.Features.Tenants
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateTenantResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateTenantRequest request)
+        [ResponseType(typeof(AddOrUpdateTenantCommand.Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdateTenantCommand.Request request)
         {
             return Ok(await _mediator.Send(request));
         }
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateTenantResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateTenantRequest request)
+        [ResponseType(typeof(AddOrUpdateTenantCommand.Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdateTenantCommand.Request request)
         {
             return Ok(await _mediator.Send(request));
         }
@@ -33,25 +34,25 @@ namespace IdentityService.Features.Tenants
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetTenantsResponse))]
+        [ResponseType(typeof(GetTenantsQuery.Response))]
         public async Task<IHttpActionResult> Get()
         {
-            var request = new GetTenantsRequest();
+            var request = new GetTenantsQuery.Request();
             return Ok(await _mediator.Send(request));
         }
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetTenantByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetTenantByIdRequest request)
+        [ResponseType(typeof(GetTenantByIdQuery.Response))]
+        public async Task<IHttpActionResult> GetById([FromUri]GetTenantByIdQuery.Request request)
         {
             return Ok(await _mediator.Send(request));
         }
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveTenantResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveTenantRequest request)
+        [ResponseType(typeof(RemoveTenantCommand.Response))]
+        public async Task<IHttpActionResult> Remove([FromUri]RemoveTenantCommand.Request request)
         {
             return Ok(await _mediator.Send(request));
         }
