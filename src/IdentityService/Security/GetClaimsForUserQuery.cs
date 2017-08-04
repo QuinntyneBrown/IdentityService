@@ -5,29 +5,30 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
 using System.Security.Claims;
+using IdentityService.Features.Core;
 
 namespace IdentityService.Security
 {
     public class GetClaimsForUserQuery
     {
-        public class GetClaimsForUserRequest : IRequest<GetClaimsForUserResponse>
+        public class Request : IRequest<Response>
         {
             public string Username { get; set; }
         }
 
-        public class GetClaimsForUserResponse
+        public class Response
         {
             public ICollection<Claim> Claims { get; set; }
         }
 
-        public class GetClaimsForUserHandler : IAsyncRequestHandler<GetClaimsForUserRequest, GetClaimsForUserResponse>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetClaimsForUserHandler(IIdentityServiceContext context)
+            public Handler(IIdentityServiceContext context)
             {
                 _context = context;
             }
 
-            public async Task<GetClaimsForUserResponse> Handle(GetClaimsForUserRequest message)
+            public async Task<Response> Handle(Request message)
             {
 
                 var claims = new List<System.Security.Claims.Claim>();
@@ -43,14 +44,14 @@ namespace IdentityService.Security
                     claims.Add(new Claim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", role));
                 }
 
-                return new GetClaimsForUserResponse()
+                return new Response()
                 {
                     Claims = claims
                 };
             }
 
             private readonly IIdentityServiceContext _context;
-            
+            private readonly ICache _cache;
         }
     }
 }

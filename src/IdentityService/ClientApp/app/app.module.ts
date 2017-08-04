@@ -32,7 +32,7 @@ const providers = [];
         ReactiveFormsModule,
         RouterModule,
 
-        IncidentsModule,
+
         SharedModule
     ],
     providers: providers,

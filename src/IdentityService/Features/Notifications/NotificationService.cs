@@ -31,7 +31,7 @@ namespace IdentityService.Features.Notifications
 
         public void ResolveRecipients(ref SendGridMessage mailMessage)
         {
-            mailMessage.AddTo(new EmailAddress("digitalarchitectureteam@coruseent.com"));            
+            mailMessage.AddTo(new EmailAddress("quinntynebrown@gmail.com"));            
         }
 
         public async Task<dynamic> SendAsync(SendGridMessage mailMessage)
