@@ -1,5 +1,5 @@
 export * from "./accounts";
-export * from "./environments";
+export * from "./environment";
 export * from "./features";
 export * from "./shared";
 export * from "./subscriptions";

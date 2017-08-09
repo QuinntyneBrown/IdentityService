@@ -1,0 +1,5 @@
+<ce-feature-paginated-list [features]="features"                           
+                           (delete)="tryToDelete($event)"
+                           (edit)="tryToEdit($event)"
+                           (filterKeyUp)="handleFeaturesFilterKeyUp($event)">
+</ce-feature-paginated-list>

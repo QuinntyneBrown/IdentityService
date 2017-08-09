@@ -1,0 +1,5 @@
+<ce-account-paginated-list [accounts]="accounts"                           
+                           (delete)="tryToDelete($event)"
+                           (edit)="tryToEdit($event)"
+                           (filterKeyUp)="handleAccountsFilterKeyUp($event)">
+</ce-account-paginated-list>

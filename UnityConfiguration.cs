@@ -4,7 +4,6 @@ using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using IdentityService.Features.DigitalAssets;
 using System.Net.Http;
 
 namespace IdentityService
@@ -13,7 +12,7 @@ namespace IdentityService
     {
         public static IUnityContainer GetContainer()
         {
-            var container = new UnityContainer();            
+            var container = new UnityContainer();
             container.AddMediator<UnityConfiguration>();
 
             container.RegisterType<HttpClient>(
@@ -21,7 +20,7 @@ namespace IdentityService
                 new InjectionFactory(x => new HttpClient()));
 
             container.RegisterInstance(AuthConfiguration.LazyConfig);
-            container.RegisterInstance(AzureBlobStorageConfiguration.LazyConfig);          
+
             return container;
         }
     }
@@ -34,6 +33,9 @@ namespace IdentityService
             var classes = AllClasses.FromAssemblies(typeof(T).Assembly)
                 .Where(x => x.Name.Contains("Controller") == false
                 && x.Name.Contains("Attribute") == false
+                && x.Name.EndsWith("Hub") == false
+                && x.Name.EndsWith("Message") == false
+                && x.Name == "MemoryCache" == false
                 && x.FullName.Contains("Data.Model") == false)
                 .ToList();
 
@@ -45,11 +47,12 @@ namespace IdentityService
             var classes = AllClasses.FromAssemblies(typeof(T1).Assembly)
                 .Where(x => x.Name.Contains("Controller") == false
                 && x.Name.Contains("Attribute") == false
+                && x.Name.EndsWith("Message") == false
                 && x.FullName.Contains("Data.Model") == false)
                 .ToList();
 
             classes.AddRange(AllClasses.FromAssemblies(typeof(T2).Assembly)
-                .Where(x => x.Name.Contains("Controller") == false 
+                .Where(x => x.Name.Contains("Controller") == false
                 && x.FullName.Contains("Data.Model") == false)
                 .ToList());
 

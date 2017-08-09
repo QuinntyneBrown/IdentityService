@@ -13,6 +13,7 @@ namespace IdentityService.Features.Subscriptions
     public class SubscriptionController : BaseApiController
     {
         public SubscriptionController(IMediator mediator)
+            :base(mediator)
         {
             _mediator = mediator;
         }

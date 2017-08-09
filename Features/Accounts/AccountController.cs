@@ -11,6 +11,7 @@ namespace IdentityService.Features.Accounts
     public class AccountController : BaseApiController
     {
         public AccountController(IMediator mediator)
+            :base(mediator)
         {
             _mediator = mediator;
         }

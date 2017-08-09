@@ -282,14 +282,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="ClientApp\app\accounts\account-paginated-list-page.component.css">
+      <DependentUpon>account-paginated-list-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\accounts\account-paginated-list-page.component.html" />
+    <Content Include="ClientApp\app\accounts\account-paginated-list.component.css">
+      <DependentUpon>account-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\accounts\account-paginated-list.component.html" />
     <Content Include="ClientApp\app\app.component.css">
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\app.component.html" />
+    <Content Include="ClientApp\app\features\feature-paginated-list-page.component.css">
+      <DependentUpon>feature-paginated-list-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\features\feature-paginated-list.component.css">
+      <DependentUpon>feature-paginated-list.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\header.component.html" />
+    <Content Include="ClientApp\app\shared\components\left-nav.component.css">
+      <DependentUpon>left-nav.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\shared\components\left-nav.component.html" />
     <Content Include="ClientApp\app\shared\components\nav.component.css">
       <DependentUpon>nav.component.html</DependentUpon>
     </Content>
@@ -310,6 +328,36 @@
       <DependentUpon>tabs.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\tabs.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.css">
+      <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\subscriptions\subscription-paginated-list.component.css">
+      <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\tenant-paginated-list-page.component.css">
+      <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\tenant-paginated-list.component.css">
+      <DependentUpon>tenant-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\login-page.component.css">
+      <DependentUpon>login-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\login-page.component.html" />
+    <Content Include="ClientApp\app\users\login.component.css">
+      <DependentUpon>login.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\login.component.html" />
+    <Content Include="ClientApp\app\users\register-page.component.css">
+      <DependentUpon>register-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\register-page.component.html" />
+    <Content Include="ClientApp\app\users\user-paginated-list-page.component.css">
+      <DependentUpon>user-paginated-list-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\user-paginated-list.component.css">
+      <DependentUpon>user-paginated-list.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\styles\edit.css" />
     <Content Include="ClientApp\styles\forms.css" />
     <Content Include="ClientApp\styles\list-item.css" />
@@ -324,6 +372,14 @@
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
     <Content Include="packages.config" />
+    <Content Include="ClientApp\app\tenants\tenant-paginated-list-page.component.html" />
+    <Content Include="ClientApp\app\features\feature-paginated-list-page.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.html" />
+    <Content Include="ClientApp\app\users\user-paginated-list-page.component.html" />
+    <Content Include="ClientApp\app\features\feature-paginated-list.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-paginated-list.component.html" />
+    <Content Include="ClientApp\app\tenants\tenant-paginated-list.component.html" />
+    <Content Include="ClientApp\app\users\user-paginated-list.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -357,24 +413,33 @@
     <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
     <Compile Include="Features\Accounts\RemoveAccountCommand.cs" />
     <Compile Include="Features\Core\BaseApiController.cs" />
+    <Compile Include="Features\Core\BaseEventBusMessage.cs" />
+    <Compile Include="Features\Core\BaseHub.cs" />
     <Compile Include="Features\Core\BaseRequest.cs" />
     <Compile Include="Features\Core\Cache.cs" />
     <Compile Include="Features\Core\CacheProvider.cs" />
+    <Compile Include="Features\Core\CoreConfiguration.cs" />
     <Compile Include="Features\Core\DateExtensions.cs" />
+    <Compile Include="Features\Core\EventBus.cs" />
+    <Compile Include="Features\Core\EventBusMessage.cs" />
+    <Compile Include="Features\Core\EventHub.cs" />
     <Compile Include="Features\Core\HandleError.cs" />
     <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
     <Compile Include="Features\Core\ICache.cs" />
     <Compile Include="Features\Core\ICacheProvider.cs" />
+    <Compile Include="Features\Core\IEventBusMessageHandler.cs" />
     <Compile Include="Features\Core\ILogger.cs" />
     <Compile Include="Features\Core\ILoggerFactory.cs" />
     <Compile Include="Features\Core\ILoggerProvider.cs" />
+    <Compile Include="Features\Core\ITopicClient.cs" />
     <Compile Include="Features\Core\Logger.cs" />
     <Compile Include="Features\Core\LoggerFactory.cs" />
     <Compile Include="Features\Core\MemoryCache.cs" />
     <Compile Include="Features\Core\RateLimit.cs" />
+    <Compile Include="Features\Core\RedisCache.cs" />
+    <Compile Include="Features\Core\RedisCacheConfiguration.cs" />
     <Compile Include="Features\Core\StatusMiddleware.cs" />
     <Compile Include="Features\Core\StringExtensions.cs" />
-    <Compile Include="Features\Core\TenantMiddleware.cs" />
     <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3Configuration.cs" />
@@ -426,6 +491,7 @@
     <Compile Include="Features\Users\RemoveUserCommand.cs" />
     <Compile Include="Features\Users\UserApiModel.cs" />
     <Compile Include="Features\Users\UsersController.cs" />
+    <Compile Include="Security\AddSessionCommand.cs" />
     <Compile Include="Security\AuthConfiguration.cs" />
     <Compile Include="Security\AuthenticateCommand.cs" />
     <Compile Include="Security\EncryptionService.cs" />
@@ -436,22 +502,39 @@
     <Compile Include="Security\OAuthOptions.cs" />
     <Compile Include="Security\OAuthProvider.cs" />
     <Compile Include="Security\Roles.cs" />
+    <Compile Include="Security\SymetricKeyController.cs" />
     <Compile Include="Security\UserManager.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnityConfiguration.cs" />
+    <Compile Include="Security\GetSymetricKeyQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\accounts\account-paginated-list-page.component.ts">
+      <DependentUpon>account-paginated-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\accounts\account-paginated-list.component.ts">
+      <DependentUpon>account-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts">
       <DependentUpon>app.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
-    <TypeScriptCompile Include="ClientApp\app\environments\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\app\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\feature-paginated-list-page.component.ts">
+      <DependentUpon>feature-paginated-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\features\feature-paginated-list.component.ts">
+      <DependentUpon>feature-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\components\left-nav.component.ts">
+      <DependentUpon>left-nav.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\nav.component.ts">
       <DependentUpon>nav.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -467,15 +550,55 @@
     <TypeScriptCompile Include="ClientApp\app\shared\components\tabs.component.ts">
       <DependentUpon>tabs.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\shared\constants.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\guards\auth-guard.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\guards\event-hub-connection-guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\guards\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\guards\tenant-guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interceptors\auth.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\interceptors\index.ts" />
-    <TypeScriptCompile Include="ClientApp\app\shared\services\cache.ts" />
-    <TypeScriptCompile Include="ClientApp\app\shared\services\dispatcher.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interceptors\jwt.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interceptors\tenant.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\authentication.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\correlation-ids-list.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\error.service.ts" />
-    <TypeScriptCompile Include="ClientApp\app\shared\services\event-hub.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\event-hub.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\login-redirect.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\storage.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\add-or-update.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck-out.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.ts">
+      <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list.component.ts">
+      <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenant-paginated-list-page.component.ts">
+      <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenant-paginated-list.component.ts">
+      <DependentUpon>tenant-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\login-page.component.ts">
+      <DependentUpon>login-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\login.component.ts">
+      <DependentUpon>login.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\register-page.component.ts">
+      <DependentUpon>register-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\user-paginated-list-page.component.ts">
+      <DependentUpon>user-paginated-list-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\user-paginated-list.component.ts">
+      <DependentUpon>user-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
     <TypeScriptCompile Include="ClientApp\app\accounts\index.ts" />
@@ -488,6 +611,16 @@
     <TypeScriptCompile Include="ClientApp\app\tenants\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\users.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenants.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenant.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\accounts\accounts.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\accounts\account.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\users\user.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\feature.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscriptions.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\features.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\users\users.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

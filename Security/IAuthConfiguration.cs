@@ -8,6 +8,5 @@ namespace IdentityService.Security
         string JwtKey { get; set; }
         string JwtAudience { get; set; }
         string JwtIssuer { get; set; }
-        string AllowedOrigins { get; set; }
     }
 }

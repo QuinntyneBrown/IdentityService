@@ -16,6 +16,7 @@ namespace IdentityService.Features.DigitalAssets
     public class DigitalAssetController : BaseApiController
     {        
         public DigitalAssetController(IMediator mediator, IUserManager userManager)
+            :base(mediator)
         {
             _mediator = mediator;
             _userManager = userManager;

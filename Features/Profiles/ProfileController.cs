@@ -11,6 +11,7 @@ namespace IdentityService.Features.Profiles
     public class ProfileController : BaseApiController
     {
         public ProfileController(IMediator mediator)
+            :base(mediator)
         {
             _mediator = mediator;
         }

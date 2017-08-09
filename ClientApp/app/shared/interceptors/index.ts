@@ -1,1 +1,1 @@
-﻿
+export * from "./tenant.interceptor";

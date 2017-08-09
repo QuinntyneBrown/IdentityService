@@ -11,6 +11,7 @@ namespace IdentityService.Features.Features
     public class FeaturesController : BaseApiController
     {
         public FeaturesController(IMediator mediator)
+            :base(mediator)
         {
             _mediator = mediator;
         }

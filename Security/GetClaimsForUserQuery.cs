@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
 using System.Security.Claims;
-using IdentityService.Features.Core;
+using System;
 
 namespace IdentityService.Security
 {
@@ -14,6 +14,7 @@ namespace IdentityService.Security
         public class Request : IRequest<Response>
         {
             public string Username { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class Response
@@ -35,7 +36,8 @@ namespace IdentityService.Security
 
                 var user = await _context.Users
                     .Include(x => x.Roles)
-                    .SingleAsync(x => x.Username == message.Username);
+                    .Include(x=>x.Tenant)
+                    .SingleAsync(x => x.Username == message.Username && x.Tenant.UniqueId == message.TenantUniqueId);
 
                 claims.Add(new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", message.Username));
 
@@ -50,8 +52,7 @@ namespace IdentityService.Security
                 };
             }
 
-            private readonly IIdentityServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IIdentityServiceContext _context;            
         }
     }
 }

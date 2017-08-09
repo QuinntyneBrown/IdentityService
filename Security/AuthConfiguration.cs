@@ -47,13 +47,6 @@ namespace IdentityService.Security
             set { this["authType"] = value; }
         }
 
-        [ConfigurationProperty("allowedOrigins")]
-        public string AllowedOrigins
-        {
-            get { return (string)this["allowedOrigins"]; }
-            set { this["allowedOrigins"] = value; }
-        }
-
         public static AuthConfiguration Config
         {
             get { return ConfigurationManager.GetSection("authConfiguration") as AuthConfiguration; }

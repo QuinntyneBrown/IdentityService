@@ -11,6 +11,7 @@ namespace IdentityService.Features.Tenants
     public class TenantController : BaseApiController
     {
         public TenantController(IMediator mediator)
+            :base(mediator)
         {
             _mediator = mediator;
         }
