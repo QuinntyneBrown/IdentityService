@@ -1,0 +1,6 @@
+<span (click)="select.emit({ detail: { feature: feature} })">{{ feature.name }}</span>
+<div>
+    <span (click)="edit.emit({ detail: { feature: feature} })">EDIT</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <span (click)="delete.emit({ detail: { feature: feature} })">DELETE</span>
+</div>

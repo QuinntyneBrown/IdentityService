@@ -282,6 +282,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="ClientApp\app\accounts\account-edit-page.component.css">
+      <DependentUpon>account-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\accounts\account-list-item.component.css">
+      <DependentUpon>account-list-item.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\accounts\account-paginated-list-page.component.css">
       <DependentUpon>account-paginated-list-page.component.html</DependentUpon>
     </Content>
@@ -294,6 +300,12 @@
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\app.component.html" />
+    <Content Include="ClientApp\app\features\feature-edit-page.component.css">
+      <DependentUpon>feature-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\features\feature-list-item.component.css">
+      <DependentUpon>feature-list-item.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\features\feature-paginated-list-page.component.css">
       <DependentUpon>feature-paginated-list-page.component.html</DependentUpon>
     </Content>
@@ -328,11 +340,17 @@
       <DependentUpon>tabs.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\tabs.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-edit-page.component.css">
+      <DependentUpon>subscription-edit-page.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.css">
       <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\subscriptions\subscription-paginated-list.component.css">
       <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\tenant-edit-page.component.css">
+      <DependentUpon>tenant-edit-page.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\tenants\tenant-paginated-list-page.component.css">
       <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
@@ -352,6 +370,12 @@
       <DependentUpon>register-page.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\users\register-page.component.html" />
+    <Content Include="ClientApp\app\users\user-edit-page.component.css">
+      <DependentUpon>user-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\user-list-item.component.css">
+      <DependentUpon>user-list-item.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\users\user-paginated-list-page.component.css">
       <DependentUpon>user-paginated-list-page.component.html</DependentUpon>
     </Content>
@@ -380,6 +404,14 @@
     <Content Include="ClientApp\app\subscriptions\subscription-paginated-list.component.html" />
     <Content Include="ClientApp\app\tenants\tenant-paginated-list.component.html" />
     <Content Include="ClientApp\app\users\user-paginated-list.component.html" />
+    <Content Include="ClientApp\app\accounts\account-list-item.component.html" />
+    <Content Include="ClientApp\app\features\feature-list-item.component.html" />
+    <Content Include="ClientApp\app\users\user-list-item.component.html" />
+    <Content Include="ClientApp\app\accounts\account-edit-page.component.html" />
+    <Content Include="ClientApp\app\features\feature-edit-page.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-edit-page.component.html" />
+    <Content Include="ClientApp\app\tenants\tenant-edit-page.component.html" />
+    <Content Include="ClientApp\app\users\user-edit-page.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -509,6 +541,12 @@
     <Compile Include="Security\GetSymetricKeyQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\accounts\account-edit-page.component.ts">
+      <DependentUpon>account-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\accounts\account-list-item.component.ts">
+      <DependentUpon>account-list-item.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\accounts\account-paginated-list-page.component.ts">
       <DependentUpon>account-paginated-list-page.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -521,6 +559,12 @@
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
     <TypeScriptCompile Include="ClientApp\app\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\feature-edit-page.component.ts">
+      <DependentUpon>feature-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\features\feature-list-item.component.ts">
+      <DependentUpon>feature-list-item.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\features\feature-paginated-list-page.component.ts">
       <DependentUpon>feature-paginated-list-page.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -572,11 +616,17 @@
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck-out.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck.ts" />
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-edit-page.component.ts">
+      <DependentUpon>subscription-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.ts">
       <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list.component.ts">
       <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenant-edit-page.component.ts">
+      <DependentUpon>tenant-edit-page.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-paginated-list-page.component.ts">
       <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
@@ -592,6 +642,12 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\register-page.component.ts">
       <DependentUpon>register-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\user-edit-page.component.ts">
+      <DependentUpon>user-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\user-list-item.component.ts">
+      <DependentUpon>user-list-item.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\user-paginated-list-page.component.ts">
       <DependentUpon>user-paginated-list-page.component.html</DependentUpon>

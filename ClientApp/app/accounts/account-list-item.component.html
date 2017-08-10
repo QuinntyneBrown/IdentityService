@@ -1,0 +1,6 @@
+<span (click)="select.emit({ detail: { account: account} })">{{ account.name }}</span>
+<div>
+    <span (click)="edit.emit({ detail: { account: account} })">EDIT</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <span (click)="delete.emit({ detail: { account: account} })">DELETE</span>
+</div>
