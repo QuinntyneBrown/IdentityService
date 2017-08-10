@@ -12,7 +12,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
     ],
     selector: "ce-subscription-paginated-list"
 })
-export class Subscription { 
+export class SubscriptionPaginatedListComponent { 
     constructor() {
         this.edit = new EventEmitter();
         this.delete = new EventEmitter();
