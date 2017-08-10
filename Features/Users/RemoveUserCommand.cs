@@ -19,9 +19,9 @@ namespace IdentityService.Features.Users
 
         public class Response { }
 
-        public class RemoveUserHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public RemoveUserHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;

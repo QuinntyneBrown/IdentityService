@@ -1,3 +1,4 @@
+using IdentityService.Features.Core;
 using IdentityService.Security;
 using MediatR;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ namespace IdentityService.Features.Users
 {
     [Authorize]
     [RoutePrefix("api/users")]
-    public class UsersController : ApiController
+    public class UsersController : BaseApiController
     {
         public UsersController(IMediator mediator, IUserManager userManager)
+            :base(mediator)
         {
             _mediator = mediator;
             _userManager = userManager;

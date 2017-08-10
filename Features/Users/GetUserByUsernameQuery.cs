@@ -19,9 +19,9 @@ namespace IdentityService.Features.Users
             public UserApiModel User { get; set; }
         }
 
-        public class GetUserByUsernameHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetUserByUsernameHandler(IIdentityServiceContext context, ICache cache)
+            public Handler(IIdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;

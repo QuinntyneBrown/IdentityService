@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace IdentityService.Features.Users
 {
@@ -12,7 +13,7 @@ namespace IdentityService.Features.Users
     {
         public class Request : IRequest<Response> { 
             public int Id { get; set; }
-			public int? TenantId { get; set; }
+			public Guid? TenantUniqueId { get; set; }
         }
 
         public class Response
@@ -20,9 +21,9 @@ namespace IdentityService.Features.Users
             public UserApiModel User { get; set; } 
         }
 
-        public class GetUserByIdHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetUserByIdHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
@@ -32,7 +33,7 @@ namespace IdentityService.Features.Users
             {                
                 return new Response()
                 {
-                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId))
+                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId))
                 };
             }
 

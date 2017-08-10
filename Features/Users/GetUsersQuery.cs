@@ -19,9 +19,9 @@ namespace IdentityService.Features.Users
             public ICollection<UserApiModel> Users { get; set; } = new HashSet<UserApiModel>();
         }
 
-        public class GetUsersHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public GetUsersHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
