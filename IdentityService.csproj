@@ -9,7 +9,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{26E94CF7-3BA9-4D93-BA20-709EDB04184C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -24,7 +25,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -297,6 +299,9 @@
       <DependentUpon>account-paginated-list.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\accounts\account-paginated-list.component.html" />
+    <Content Include="ClientApp\app\accounts\accounts-left-nav.component.css">
+      <DependentUpon>accounts-left-nav.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\app.component.css">
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
@@ -403,6 +408,7 @@
     </Content>
     <Content Include="ClientApp\styles\edit.css" />
     <Content Include="ClientApp\styles\forms.css" />
+    <Content Include="ClientApp\styles\left-nav.css" />
     <Content Include="ClientApp\styles\list-item.css" />
     <Content Include="ClientApp\styles\list.css" />
     <Content Include="index.html" />
@@ -438,6 +444,7 @@
     <Content Include="ClientApp\app\users\user-edit.component.html" />
     <Content Include="ClientApp\app\tenants\tenant-list-item.component.html" />
     <Content Include="ClientApp\app\subscriptions\subscription-list-item.component.html" />
+    <Content Include="ClientApp\app\accounts\accounts-left-nav.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -581,6 +588,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\accounts\account-paginated-list.component.ts">
       <DependentUpon>account-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\accounts\accounts-left-nav.component.ts">
+      <DependentUpon>accounts-left-nav.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts">
       <DependentUpon>app.component.html</DependentUpon>
@@ -753,7 +763,8 @@
           <IISUrl>http://localhost:62232/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
