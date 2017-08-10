@@ -18,7 +18,7 @@ export class UserEditPageComponent {
 
     public async ngOnInit() {
         if (this._activatedRoute.snapshot.params["id"]) {            
-            this.user = (await this._usersService.getById({ id: this._activatedRoute.snapshot.params["id"] })).user;
+            this.user = (await this._usersService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).user;
         }
     }
 

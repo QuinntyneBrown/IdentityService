@@ -11,9 +11,9 @@ export class TenantsService {
         private _httpClient: HttpClient)
     { }
 
-    public add(entity: Tenant) {
+    public addOrUpdate(options: { tenant: Tenant, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/tenant/add`, entity)
+            .post(`${this._baseUrl}/api/tenant/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
@@ -23,7 +23,7 @@ export class TenantsService {
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<Tenant> {
+    public getById(options: { id: number }): Observable<{ tenant: Tenant }> {
         return this._httpClient
             .get<{tenant: Tenant}>(`${this._baseUrl}/api/tenant/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);

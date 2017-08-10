@@ -18,7 +18,7 @@ export class TenantEditPageComponent {
 
     public async ngOnInit() {
         if (this._activatedRoute.snapshot.params["id"]) {            
-            this.tenant = (await this._tenantsService.getById({ id: this._activatedRoute.snapshot.params["id"] })).tenant;
+            this.tenant = (await this._tenantsService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).tenant;
         }
     }
 

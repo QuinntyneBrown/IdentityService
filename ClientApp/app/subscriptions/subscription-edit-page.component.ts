@@ -18,7 +18,7 @@ export class SubscriptionEditPageComponent {
 
     public async ngOnInit() {
         if (this._activatedRoute.snapshot.params["id"]) {            
-            this.subscription = (await this._subscriptionsService.getById({ id: this._activatedRoute.snapshot.params["id"] })).subscription;
+            this.subscription = (await this._subscriptionsService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).subscription;
         }
     }
 

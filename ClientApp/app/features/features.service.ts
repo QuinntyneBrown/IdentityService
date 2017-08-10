@@ -11,9 +11,9 @@ export class FeaturesService {
         private _httpClient: HttpClient)
     { }
 
-    public add(entity: Feature) {
+    public addOrUpdate(options: { feature: Feature, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/feature/add`, entity)
+            .post(`${this._baseUrl}/api/feature/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
@@ -23,7 +23,7 @@ export class FeaturesService {
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<Feature> {
+    public getById(options: { id: number }): Observable<{ feature: Feature }> {
         return this._httpClient
             .get<{feature: Feature}>(`${this._baseUrl}/api/feature/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);

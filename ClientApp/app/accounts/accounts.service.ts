@@ -11,9 +11,9 @@ export class AccountsService {
         private _httpClient: HttpClient)
     { }
 
-    public add(entity: Account) {
+    public addOrUpdate(options: { account: Account, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/account/add`, entity)
+            .post(`${this._baseUrl}/api/account/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
@@ -23,7 +23,7 @@ export class AccountsService {
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<Account> {
+    public getById(options: { id: number }): Observable<{ account: Account }> {
         return this._httpClient
             .get<{account: Account}>(`${this._baseUrl}/api/account/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);

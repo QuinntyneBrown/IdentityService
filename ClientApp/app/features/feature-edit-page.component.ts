@@ -18,7 +18,7 @@ export class FeatureEditPageComponent {
 
     public async ngOnInit() {
         if (this._activatedRoute.snapshot.params["id"]) {            
-            this.feature = (await this._featuresService.getById({ id: this._activatedRoute.snapshot.params["id"] })).feature;
+            this.feature = (await this._featuresService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).feature;
         }
     }
 

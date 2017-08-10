@@ -11,7 +11,7 @@ export class UsersService {
         private _httpClient: HttpClient)
     { }
 
-    public add(options: { user: User, correlationId: string }) {
+    public addOrUpdate(options: { user: User, correlationId: string }) {
         return this._httpClient
             .post(`${this._baseUrl}/api/user/add`, options)
             .catch(this._errorService.catchErrorResponse);
@@ -23,7 +23,7 @@ export class UsersService {
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<User> {
+    public getById(options: { id: number }): Observable<{ user: User }> {
         return this._httpClient
             .get<{user: User}>(`${this._baseUrl}/api/user/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);

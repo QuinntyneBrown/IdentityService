@@ -11,9 +11,9 @@ export class SubscriptionsService {
         private _httpClient: HttpClient)
     { }
 
-    public add(entity: Subscription) {
+    public addOrUpdate(options: { subscription: Subscription, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/subscription/add`, entity)
+            .post(`${this._baseUrl}/api/subscription/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
@@ -23,7 +23,7 @@ export class SubscriptionsService {
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<Subscription> {
+    public getById(options: { id: number }): Observable<{ subscription: Subscription }> {
         return this._httpClient
             .get<{subscription: Subscription}>(`${this._baseUrl}/api/subscription/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);

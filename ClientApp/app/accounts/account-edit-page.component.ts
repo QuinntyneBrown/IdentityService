@@ -18,7 +18,7 @@ export class AccountEditPageComponent {
 
     public async ngOnInit() {
         if (this._activatedRoute.snapshot.params["id"]) {            
-            this.account = (await this._accountsService.getById({ id: this._activatedRoute.snapshot.params["id"] })).account;
+            this.account = (await this._accountsService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).account;
         }
     }
 
