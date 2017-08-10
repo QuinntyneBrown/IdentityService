@@ -285,6 +285,9 @@
     <Content Include="ClientApp\app\accounts\account-edit-page.component.css">
       <DependentUpon>account-edit-page.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\accounts\account-edit.component.css">
+      <DependentUpon>account-edit.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\accounts\account-list-item.component.css">
       <DependentUpon>account-list-item.component.html</DependentUpon>
     </Content>
@@ -302,6 +305,9 @@
     <Content Include="ClientApp\app\app.component.html" />
     <Content Include="ClientApp\app\features\feature-edit-page.component.css">
       <DependentUpon>feature-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\features\feature-edit.component.css">
+      <DependentUpon>feature-edit.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\features\feature-list-item.component.css">
       <DependentUpon>feature-list-item.component.html</DependentUpon>
@@ -343,6 +349,9 @@
     <Content Include="ClientApp\app\subscriptions\subscription-edit-page.component.css">
       <DependentUpon>subscription-edit-page.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\subscriptions\subscription-edit.component.css">
+      <DependentUpon>subscription-edit.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.css">
       <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
     </Content>
@@ -351,6 +360,9 @@
     </Content>
     <Content Include="ClientApp\app\tenants\tenant-edit-page.component.css">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\tenant-edit.component.css">
+      <DependentUpon>tenant-edit.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\tenants\tenant-paginated-list-page.component.css">
       <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
@@ -372,6 +384,9 @@
     <Content Include="ClientApp\app\users\register-page.component.html" />
     <Content Include="ClientApp\app\users\user-edit-page.component.css">
       <DependentUpon>user-edit-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\user-edit.component.css">
+      <DependentUpon>user-edit.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\users\user-list-item.component.css">
       <DependentUpon>user-list-item.component.html</DependentUpon>
@@ -412,6 +427,11 @@
     <Content Include="ClientApp\app\subscriptions\subscription-edit-page.component.html" />
     <Content Include="ClientApp\app\tenants\tenant-edit-page.component.html" />
     <Content Include="ClientApp\app\users\user-edit-page.component.html" />
+    <Content Include="ClientApp\app\accounts\account-edit.component.html" />
+    <Content Include="ClientApp\app\features\feature-edit.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscription-edit.component.html" />
+    <Content Include="ClientApp\app\tenants\tenant-edit.component.html" />
+    <Content Include="ClientApp\app\users\user-edit.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -544,6 +564,9 @@
     <TypeScriptCompile Include="ClientApp\app\accounts\account-edit-page.component.ts">
       <DependentUpon>account-edit-page.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\accounts\account-edit.component.ts">
+      <DependentUpon>account-edit.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\accounts\account-list-item.component.ts">
       <DependentUpon>account-list-item.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -561,6 +584,9 @@
     <TypeScriptCompile Include="ClientApp\app\environment.ts" />
     <TypeScriptCompile Include="ClientApp\app\features\feature-edit-page.component.ts">
       <DependentUpon>feature-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\features\feature-edit.component.ts">
+      <DependentUpon>feature-edit.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\features\feature-list-item.component.ts">
       <DependentUpon>feature-list-item.component.html</DependentUpon>
@@ -619,6 +645,9 @@
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-edit-page.component.ts">
       <DependentUpon>subscription-edit-page.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-edit.component.ts">
+      <DependentUpon>subscription-edit.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list-page.component.ts">
       <DependentUpon>subscription-paginated-list-page.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -627,6 +656,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-edit-page.component.ts">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenant-edit.component.ts">
+      <DependentUpon>tenant-edit.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-paginated-list-page.component.ts">
       <DependentUpon>tenant-paginated-list-page.component.html</DependentUpon>
@@ -645,6 +677,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\user-edit-page.component.ts">
       <DependentUpon>user-edit-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\user-edit.component.ts">
+      <DependentUpon>user-edit.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\user-list-item.component.ts">
       <DependentUpon>user-list-item.component.html</DependentUpon>
