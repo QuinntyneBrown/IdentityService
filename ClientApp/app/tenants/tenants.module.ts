@@ -9,11 +9,13 @@ import { TenantsService } from "./tenants.service";
 import { TenantEditComponent } from "./tenant-edit.component";
 import { TenantListItemComponent } from "./tenant-list-item.component";
 import { TenantPaginatedListComponent } from "./tenant-paginated-list.component";
+import { TenantsLeftNavComponent } from "./tenants-left-nav.component";
 
 const declarables = [
     TenantEditComponent,
     TenantListItemComponent,
-    TenantPaginatedListComponent
+    TenantPaginatedListComponent,
+    TenantsLeftNavComponent
 ];
 
 const providers = [TenantsService];

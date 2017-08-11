@@ -9,11 +9,13 @@ import { SubscriptionsService } from "./subscriptions.service";
 import { SubscriptionEditComponent } from "./subscription-edit.component";
 import { SubscriptionListItemComponent } from "./subscription-list-item.component";
 import { SubscriptionPaginatedListComponent } from "./subscription-paginated-list.component";
+import { SubscriptionsLeftNavComponent } from "./subscriptions-left-nav.component";
 
 const declarables = [
     SubscriptionEditComponent,
     SubscriptionListItemComponent,
-    SubscriptionPaginatedListComponent
+    SubscriptionPaginatedListComponent,
+    SubscriptionsLeftNavComponent
 ];
 
 const providers = [SubscriptionsService];

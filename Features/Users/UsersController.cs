@@ -50,10 +50,7 @@ namespace IdentityService.Features.Users
         [HttpGet]
         [ResponseType(typeof(GetUserByIdQuery.Response))]
         public async Task<IHttpActionResult> GetById([FromUri]GetUserByIdQuery.Request request)
-        {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
-            return Ok(await _mediator.Send(request));
-        }
+         => Ok(await Send(request));
 
         [Route("remove")]
         [HttpDelete]

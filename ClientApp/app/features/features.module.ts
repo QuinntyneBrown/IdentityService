@@ -9,11 +9,13 @@ import { FeaturesService } from "./features.service";
 import { FeatureEditComponent } from "./feature-edit.component";
 import { FeatureListItemComponent } from "./feature-list-item.component";
 import { FeaturePaginatedListComponent } from "./feature-paginated-list.component";
+import { FeaturesLeftNavComponent } from "./features-left-nav.component";
 
 const declarables = [
     FeatureEditComponent,
     FeatureListItemComponent,
-    FeaturePaginatedListComponent
+    FeaturePaginatedListComponent,
+    FeaturesLeftNavComponent
 ];
 
 const providers = [FeaturesService];

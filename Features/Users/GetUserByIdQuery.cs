@@ -1,19 +1,15 @@
 using MediatR;
 using IdentityService.Data;
 using IdentityService.Features.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
-using System;
 
 namespace IdentityService.Features.Users
 {
     public class GetUserByIdQuery
     {
-        public class Request : IRequest<Response> { 
+        public class Request : BaseRequest, IRequest<Response> { 
             public int Id { get; set; }
-			public Guid? TenantUniqueId { get; set; }
         }
 
         public class Response

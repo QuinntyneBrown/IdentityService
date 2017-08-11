@@ -9,11 +9,13 @@ import { AccountsService } from "./accounts.service";
 import { AccountEditComponent } from "./account-edit.component";
 import { AccountListItemComponent } from "./account-list-item.component";
 import { AccountPaginatedListComponent } from "./account-paginated-list.component";
+import { AccountsLeftNavComponent } from "./accounts-left-nav.component";
 
 const declarables = [
     AccountEditComponent,
     AccountListItemComponent,
-    AccountPaginatedListComponent
+    AccountPaginatedListComponent,
+    AccountsLeftNavComponent
 ];
 
 const providers = [AccountsService];

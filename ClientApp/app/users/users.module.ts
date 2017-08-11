@@ -11,12 +11,14 @@ import { LoginComponent } from "./login.component";
 import { UserEditComponent } from "./user-edit.component";
 import { UserListItemComponent } from "./user-list-item.component";
 import { UserPaginatedListComponent } from "./user-paginated-list.component";
+import { UsersLeftNavComponent } from "./users-left-nav.component";
 
 const declarables = [
     LoginComponent,
     UserEditComponent,
     UserListItemComponent,
-    UserPaginatedListComponent
+    UserPaginatedListComponent,
+    UsersLeftNavComponent
 ];
 
 const providers = [UsersService];

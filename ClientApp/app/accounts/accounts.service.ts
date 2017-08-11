@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Account } from "./account.model";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../shared/services/error.service";
 
 @Injectable()
@@ -31,7 +31,7 @@ export class AccountsService {
 
     public remove(options: { account: Account, correlationId: string }) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/account/remove?id=${options.account.id}`)
+            .delete(`${this._baseUrl}/api/account/remove?id=${options.account.id}&correlationId=${options.correlationId}`)
             .catch(this._errorService.catchErrorResponse);
     }
 

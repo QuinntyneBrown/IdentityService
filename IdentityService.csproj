@@ -9,8 +9,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{26E94CF7-3BA9-4D93-BA20-709EDB04184C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -25,8 +24,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -364,6 +362,9 @@
     <Content Include="ClientApp\app\subscriptions\subscription-paginated-list.component.css">
       <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.css">
+      <DependentUpon>subscriptions-left-nav.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\tenants\tenant-edit-page.component.css">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
     </Content>
@@ -378,6 +379,9 @@
     </Content>
     <Content Include="ClientApp\app\tenants\tenant-paginated-list.component.css">
       <DependentUpon>tenant-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\tenants-left-nav.component.css">
+      <DependentUpon>tenants-left-nav.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\users\login-page.component.css">
       <DependentUpon>login-page.component.html</DependentUpon>
@@ -405,6 +409,9 @@
     </Content>
     <Content Include="ClientApp\app\users\user-paginated-list.component.css">
       <DependentUpon>user-paginated-list.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\users-left-nav.component.css">
+      <DependentUpon>users-left-nav.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\styles\edit.css" />
     <Content Include="ClientApp\styles\forms.css" />
@@ -445,6 +452,11 @@
     <Content Include="ClientApp\app\tenants\tenant-list-item.component.html" />
     <Content Include="ClientApp\app\subscriptions\subscription-list-item.component.html" />
     <Content Include="ClientApp\app\accounts\accounts-left-nav.component.html" />
+    <Content Include="ClientApp\app\users\users-left-nav.component.html" />
+    <Content Include="ClientApp\app\features\features-left-nav.component.css" />
+    <Content Include="ClientApp\app\features\features-left-nav.component.html" />
+    <Content Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.html" />
+    <Content Include="ClientApp\app\tenants\tenants-left-nav.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -673,6 +685,9 @@
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-paginated-list.component.ts">
       <DependentUpon>subscription-paginated-list.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.ts">
+      <DependentUpon>subscriptions-left-nav.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-edit-page.component.ts">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -687,6 +702,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-paginated-list.component.ts">
       <DependentUpon>tenant-paginated-list.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\tenants-left-nav.component.ts">
+      <DependentUpon>tenants-left-nav.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\login-page.component.ts">
       <DependentUpon>login-page.component.html</DependentUpon>
@@ -712,6 +730,9 @@
     <TypeScriptCompile Include="ClientApp\app\users\user-paginated-list.component.ts">
       <DependentUpon>user-paginated-list.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\users-left-nav.component.ts">
+      <DependentUpon>users-left-nav.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
     <TypeScriptCompile Include="ClientApp\app\accounts\index.ts" />
@@ -734,6 +755,7 @@
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscriptions.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\features\features.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\users.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\features\features-left-nav.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -763,8 +785,7 @@
           <IISUrl>http://localhost:62232/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
