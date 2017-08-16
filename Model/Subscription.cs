@@ -16,7 +16,7 @@ namespace IdentityService.Model
         [ForeignKey("Feature")]
         public int? FeatureId { get; set; }
 
-        [Index("NameIndex", IsUnique = false)]
+        [Index("SubscriptionNameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
 

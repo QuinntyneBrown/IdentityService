@@ -1,9 +1,9 @@
 using IdentityService.Data.Helpers;
-using static IdentityService.Constants;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
+
+using static IdentityService.Constants;
 
 namespace IdentityService.Model
 {
@@ -16,7 +16,7 @@ namespace IdentityService.Model
         [Column(TypeName = "UNIQUEIDENTIFIER")]
         public Guid UniqueId { get; set; } = Guid.NewGuid();
 
-        [Index("NameIndex", IsUnique = true)]
+        [Index("TenantNameIndex", IsUnique = true)]
         [Column(TypeName = "VARCHAR")]
         [StringLength(MaxStringLength)]
         public string Name { get; set; }
