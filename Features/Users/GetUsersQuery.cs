@@ -10,9 +10,7 @@ namespace IdentityService.Features.Users
 {
     public class GetUsersQuery
     {
-        public class Request : IRequest<Response> { 
-            public int? TenantId { get; set; }		
-		}
+        public class Request : BaseRequest, IRequest<Response> { }
 
         public class Response
         {
@@ -30,7 +28,6 @@ namespace IdentityService.Features.Users
             public async Task<Response> Handle(Request request)
             {
                 var users = await _context.Users
-				    .Where( x => x.TenantId == request.TenantId )
                     .ToListAsync();
 
                 return new Response()

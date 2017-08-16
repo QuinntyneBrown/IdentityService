@@ -9,7 +9,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{26E94CF7-3BA9-4D93-BA20-709EDB04184C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -24,13 +25,15 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
     <TypeScritModuleResolution>Classic</TypeScritModuleResolution>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -319,6 +322,9 @@
     <Content Include="ClientApp\app\features\feature-paginated-list.component.css">
       <DependentUpon>feature-paginated-list.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\settings\settings-page.component.css">
+      <DependentUpon>settings-page.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
@@ -365,6 +371,14 @@
     <Content Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.css">
       <DependentUpon>subscriptions-left-nav.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\tenants\set-tenant-form.component.css">
+      <DependentUpon>set-tenant-form.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\set-tenant-form.component.html" />
+    <Content Include="ClientApp\app\tenants\set-tenant-page.component.css">
+      <DependentUpon>set-tenant-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\tenants\set-tenant-page.component.html" />
     <Content Include="ClientApp\app\tenants\tenant-edit-page.component.css">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
     </Content>
@@ -420,7 +434,6 @@
     <Content Include="ClientApp\styles\list.css" />
     <Content Include="index.html" />
     <Content Include="webpack.config.js" />
-    <Content Include="App.config" />
     <None Include="libs\jquery-2.2.3-vsdoc.js" />
     <Content Include="libs\jquery-2.2.3.js" />
     <Content Include="libs\jquery-2.2.3.min.js" />
@@ -457,6 +470,7 @@
     <Content Include="ClientApp\app\features\features-left-nav.component.html" />
     <Content Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.html" />
     <Content Include="ClientApp\app\tenants\tenants-left-nav.component.html" />
+    <Content Include="ClientApp\app\settings\settings-page.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -473,15 +487,15 @@
     <Compile Include="Data\Migrations\RoleConfiguration.cs" />
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
     <Compile Include="Data\Migrations\UserConfiguration.cs" />
-    <Compile Include="Data\Model\Account.cs" />
-    <Compile Include="Data\Model\DigitalAsset.cs" />
-    <Compile Include="Data\Model\Feature.cs" />
-    <Compile Include="Data\Model\ILoggable.cs" />
-    <Compile Include="Data\Model\Profile.cs" />
-    <Compile Include="Data\Model\Role.cs" />
-    <Compile Include="Data\Model\Subscription.cs" />
-    <Compile Include="Data\Model\Tenant.cs" />
-    <Compile Include="Data\Model\User.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\DigitalAsset.cs" />
+    <Compile Include="Model\Feature.cs" />
+    <Compile Include="Model\ILoggable.cs" />
+    <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\Subscription.cs" />
+    <Compile Include="Model\Tenant.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Features\Accounts\AccountApiModel.cs" />
     <Compile Include="Features\Accounts\AccountController.cs" />
     <Compile Include="Features\Accounts\AddOrUpdateAccountCommand.cs" />
@@ -568,22 +582,59 @@
     <Compile Include="Features\Users\RemoveUserCommand.cs" />
     <Compile Include="Features\Users\UserApiModel.cs" />
     <Compile Include="Features\Users\UsersController.cs" />
-    <Compile Include="Security\AddSessionCommand.cs" />
-    <Compile Include="Security\AuthConfiguration.cs" />
-    <Compile Include="Security\AuthenticateCommand.cs" />
-    <Compile Include="Security\EncryptionService.cs" />
-    <Compile Include="Security\GetClaimsForUserQuery.cs" />
-    <Compile Include="Security\IAuthConfiguration.cs" />
-    <Compile Include="Security\JwtOptions.cs" />
-    <Compile Include="Security\JwtWriterFormat.cs" />
-    <Compile Include="Security\OAuthOptions.cs" />
-    <Compile Include="Security\OAuthProvider.cs" />
-    <Compile Include="Security\Roles.cs" />
-    <Compile Include="Security\SymetricKeyController.cs" />
-    <Compile Include="Security\UserManager.cs" />
+    <Compile Include="Features\Security\AddSessionCommand.cs" />
+    <Compile Include="Features\Security\AuthConfiguration.cs" />
+    <Compile Include="Features\Security\AuthenticateCommand.cs" />
+    <Compile Include="Features\Security\EncryptionService.cs" />
+    <Compile Include="Features\Security\GetClaimsForUserQuery.cs" />
+    <Compile Include="Features\Security\IAuthConfiguration.cs" />
+    <Compile Include="Features\Security\JwtOptions.cs" />
+    <Compile Include="Features\Security\JwtWriterFormat.cs" />
+    <Compile Include="Features\Security\OAuthOptions.cs" />
+    <Compile Include="Features\Security\OAuthProvider.cs" />
+    <Compile Include="Features\Security\Roles.cs" />
+    <Compile Include="Features\Security\SymetricKeyController.cs" />
+    <Compile Include="Features\Security\UserManager.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnityConfiguration.cs" />
-    <Compile Include="Security\GetSymetricKeyQuery.cs" />
+    <Compile Include="Features\Security\GetSymetricKeyQuery.cs" />
+    <Compile Include="Features\Tenants\TenantsCacheKeyFactory.cs" />
+    <Compile Include="Features\Accounts\AccountsCacheKeyFactory.cs" />
+    <Compile Include="Features\DigitalAssets\DigitalAssetsCacheKeyFactory.cs" />
+    <Compile Include="Features\Features\FeaturesCacheKeyFactory.cs" />
+    <Compile Include="Features\Notifications\NotificationsCacheKeyFactory.cs" />
+    <Compile Include="Features\Profiles\ProfilesCacheKeyFactory.cs" />
+    <Compile Include="Features\Subscriptions\SubscriptionsCacheKeyFactory.cs" />
+    <Compile Include="Features\Users\UsersCacheKeyFactory.cs" />
+    <Compile Include="Features\Accounts\AccountsEventBusMessageHandler.cs" />
+    <Compile Include="Features\Accounts\AccountsEventBusMessages.cs" />
+    <Compile Include="Features\DigitalAssets\DigitalAssetsEventBusMessages.cs" />
+    <Compile Include="Features\Features\FeaturesEventBusMessages.cs" />
+    <Compile Include="Features\Notifications\NotificationsEventBusMessages.cs" />
+    <Compile Include="Features\Profiles\ProfilesEventBusMessages.cs" />
+    <Compile Include="Features\Subscriptions\SubscriptionsEventBusMessages.cs" />
+    <Compile Include="Features\Tenants\TenantsEventBusMessages.cs" />
+    <Compile Include="Features\Accounts\AddedOrUpdatedAccountMessage.cs" />
+    <Compile Include="Features\DigitalAssets\AddedOrUpdatedDigitalAssetMessage.cs" />
+    <Compile Include="Features\Features\AddedOrUpdatedFeatureMessage.cs" />
+    <Compile Include="Features\Profiles\AddedOrUpdatedProfileMessage.cs" />
+    <Compile Include="Features\Subscriptions\AddedOrUpdatedSubscriptionMessage.cs" />
+    <Compile Include="Features\Tenants\AddedOrUpdatedTenantMessage.cs" />
+    <Compile Include="Features\Accounts\RemovedAccountMessage.cs" />
+    <Compile Include="Features\Tenants\RemovedTenantMessage.cs" />
+    <Compile Include="Features\Subscriptions\RemovedSubscriptionMessage.cs" />
+    <Compile Include="Features\Profiles\RemovedProfileMessage.cs" />
+    <Compile Include="Features\Features\RemovedFeatureMessage.cs" />
+    <Compile Include="Features\DigitalAssets\RemovedDigitalAssetMessage.cs" />
+    <Compile Include="Features\DigitalAssets\DigitalAssetsEventBusMessageHandler.cs" />
+    <Compile Include="Features\Features\FeaturesEventBusMessageHandler.cs" />
+    <Compile Include="Features\Profiles\ProfilesEventBusMessageHandler.cs" />
+    <Compile Include="Features\Subscriptions\SubscriptionsEventBusMessageHandler.cs" />
+    <Compile Include="Features\Tenants\TenantsEventBusMessageHandler.cs" />
+    <Compile Include="Features\Users\UsersEventBusMessageHandler.cs" />
+    <Compile Include="Features\Users\UsersEventBusMessages.cs" />
+    <Compile Include="Features\Users\AddedOrUpdatedUserMessage.cs" />
+    <Compile Include="Features\Users\RemovedUserMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\accounts\account-edit-page.component.ts">
@@ -626,6 +677,9 @@
       <DependentUpon>feature-paginated-list.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\settings\settings-page.component.ts">
+      <DependentUpon>settings-page.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -664,7 +718,7 @@
     <TypeScriptCompile Include="ClientApp\app\shared\services\event-hub.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\login-redirect.service.ts" />
-    <TypeScriptCompile Include="ClientApp\app\shared\services\storage.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\storage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\add-or-update.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
@@ -687,6 +741,12 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscriptions-left-nav.component.ts">
       <DependentUpon>subscriptions-left-nav.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\set-tenant-form.component.ts">
+      <DependentUpon>set-tenant-form.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\tenants\set-tenant-page.component.ts">
+      <DependentUpon>set-tenant-page.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenant-edit-page.component.ts">
       <DependentUpon>tenant-edit-page.component.html</DependentUpon>
@@ -756,6 +816,8 @@
     <TypeScriptCompile Include="ClientApp\app\features\features.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\users.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\features\features-left-nav.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\settings\settings.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\settings\index.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -785,7 +847,8 @@
           <IISUrl>http://localhost:62232/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

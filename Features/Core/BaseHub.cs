@@ -2,7 +2,7 @@
 
 namespace IdentityService.Features.Core
 {
-    public class BaseHub: Hub
+    public class BaseHub : Hub
     {
     }
 }

@@ -1,20 +1,21 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
-import {HttpModule} from '@angular/http';
-import {HttpClientModule } from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AccountsModule } from "./accounts/accounts.module";
 import { FeaturesModule } from "./features/features.module";
+import { SettingsModule } from "./settings/settings.module";
 import { SubscriptionsModule } from "./subscriptions/subscriptions.module";
 import { TenantsModule } from "./tenants/tenants.module";
 import { UsersModule } from "./users/users.module";
 
-import {SharedModule} from "../app/shared";
+import { SharedModule } from "../app/shared";
 
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 
 import {
     RoutingModule,
@@ -40,6 +41,7 @@ const providers = [];
 
         AccountsModule,
         FeaturesModule,
+        SettingsModule,
         SubscriptionsModule,
         TenantsModule,
         UsersModule,

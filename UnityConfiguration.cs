@@ -1,4 +1,4 @@
-using IdentityService.Security;
+using IdentityService.Features.Security;
 using MediatR;
 using Microsoft.Practices.Unity;
 using System;
@@ -14,6 +14,14 @@ namespace IdentityService
         {
             var container = new UnityContainer();
             container.AddMediator<UnityConfiguration>();
+
+            container.RegisterType<Features.Accounts.IAccountsEventBusMessageHandler, Features.Accounts.AccountsEventBusMessageHandler>();
+            container.RegisterType<Features.DigitalAssets.IDigitalAssetsEventBusMessageHandler, Features.DigitalAssets.DigitalAssetsEventBusMessageHandler>();
+            container.RegisterType<Features.Features.IFeaturesEventBusMessageHandler, Features.Features.FeaturesEventBusMessageHandler>();
+            container.RegisterType<Features.Profiles.IProfilesEventBusMessageHandler, Features.Profiles.ProfilesEventBusMessageHandler>();
+            container.RegisterType<Features.Subscriptions.ISubscriptionsEventBusMessageHandler, Features.Subscriptions.SubscriptionsEventBusMessageHandler>();
+            container.RegisterType<Features.Tenants.ITenantsEventBusMessageHandler, Features.Tenants.TenantsEventBusMessageHandler>();
+            container.RegisterType<Features.Users.IUsersEventBusMessageHandler, Features.Users.UsersEventBusMessageHandler>();
 
             container.RegisterType<HttpClient>(
                 new ContainerControlledLifetimeManager(),
@@ -36,7 +44,8 @@ namespace IdentityService
                 && x.Name.EndsWith("Hub") == false
                 && x.Name.EndsWith("Message") == false
                 && x.Name == "MemoryCache" == false
-                && x.FullName.Contains("Data.Model") == false)
+                && x.Name.Contains("EventBusMessageHandler") == false
+                && x.FullName.Contains("IdentityService.Model") == false)
                 .ToList();
 
             return container.RegisterClassesTypesAndInstances(classes);
@@ -48,12 +57,12 @@ namespace IdentityService
                 .Where(x => x.Name.Contains("Controller") == false
                 && x.Name.Contains("Attribute") == false
                 && x.Name.EndsWith("Message") == false
-                && x.FullName.Contains("Data.Model") == false)
+                && x.FullName.Contains("IdentityService.Model") == false)
                 .ToList();
 
             classes.AddRange(AllClasses.FromAssemblies(typeof(T2).Assembly)
                 .Where(x => x.Name.Contains("Controller") == false
-                && x.FullName.Contains("Data.Model") == false)
+                && x.FullName.Contains("IdentityService.Model") == false)
                 .ToList());
 
             return container.RegisterClassesTypesAndInstances(classes);

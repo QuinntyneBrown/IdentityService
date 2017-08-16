@@ -1,5 +1,5 @@
 import { Component, HostBinding } from "@angular/core";
-import { Storage } from "./shared/services/storage";
+import { Storage } from "./shared/services/storage.service";
 import { constants } from "./shared/constants";
 import { Observable } from "rxjs/Observable";
 import { Router, NavigationStart } from "@angular/router";

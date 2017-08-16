@@ -1,5 +1,5 @@
 ﻿using IdentityService.Data.Helpers;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;

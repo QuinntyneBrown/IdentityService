@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 using IdentityService.Data;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using IdentityService.Features.Users;
 
 namespace IdentityService.Migrations

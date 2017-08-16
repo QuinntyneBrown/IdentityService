@@ -7,7 +7,7 @@ import {AuthenticationService} from "./services/authentication.service";
 import {CorrelationIdsList} from "./services/correlation-ids-list";
 import {LoginRedirectService} from "./services/login-redirect.service";
 import {EventHub} from "./services/event-hub";
-import {Storage} from "./services/storage";
+import {Storage} from "./services/storage.service";
 import {ErrorService} from "./services/error.service";
 
 import {AuthGuardService} from "./guards/auth-guard.service"

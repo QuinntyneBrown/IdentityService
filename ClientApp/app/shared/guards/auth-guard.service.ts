@@ -8,7 +8,7 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 
-import {Storage} from "../services/storage";
+import {Storage} from "../services/storage.service";
 import {LoginRedirectService} from "../services/login-redirect.service";
 import {Observable} from "rxjs";
 import {constants} from "../constants";

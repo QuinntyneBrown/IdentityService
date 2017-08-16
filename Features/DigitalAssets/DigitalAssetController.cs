@@ -1,5 +1,5 @@
 using IdentityService.Features.DigitalAssets.UploadHandlers;
-using IdentityService.Security;
+using IdentityService.Features.Security;
 using MediatR;
 using System.Net;
 using System.Net.Http;

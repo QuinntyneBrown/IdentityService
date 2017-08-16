@@ -1,1 +1,9 @@
 <h1>Identity Service</h1>
+<ul>
+    <li>
+        <a routerLink="/settings" *ngIf="isAuthenticated">settings</a>
+    </li>
+    <li>
+        <a routerLink="/login" *ngIf="isAuthenticated">logout</a>
+    </li>
+</ul>

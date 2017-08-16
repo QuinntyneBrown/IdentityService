@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using IdentityService.Data;
-using IdentityService.Data.Model;
-using IdentityService.Security;
+using IdentityService.Model;
+using IdentityService.Features.Security;
 
 namespace IdentityService.Migrations
 {

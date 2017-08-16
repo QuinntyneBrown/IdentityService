@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {LoginRedirectService} from "../shared/services/login-redirect.service";
-import {Storage} from "../shared/services/storage";
+import {Storage} from "../shared/services/storage.service";
 import {constants} from "../shared/constants";
 
 @Component({

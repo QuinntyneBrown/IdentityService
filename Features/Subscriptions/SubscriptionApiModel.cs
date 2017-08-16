@@ -1,4 +1,4 @@
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using System;
 
 namespace IdentityService.Features.Subscriptions

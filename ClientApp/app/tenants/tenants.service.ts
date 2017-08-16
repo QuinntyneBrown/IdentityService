@@ -13,25 +13,25 @@ export class TenantsService {
 
     public addOrUpdate(options: { tenant: Tenant, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/tenant/add`, options)
+            .post(`${this._baseUrl}/api/tenants/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public get(): Observable<{ tenants: Array<Tenant> }> {
         return this._httpClient
-            .get<{ tenants: Array<Tenant> }>(`${this._baseUrl}/api/tenant/get`)
+            .get<{ tenants: Array<Tenant> }>(`${this._baseUrl}/api/tenants/get`)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public getById(options: { id: number }): Observable<{ tenant: Tenant }> {
         return this._httpClient
-            .get<{tenant: Tenant}>(`${this._baseUrl}/api/tenant/getById?id=${options.id}`)
+            .get<{tenant: Tenant}>(`${this._baseUrl}/api/tenants/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public remove(options: { tenant: Tenant, correlationId: string }) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/tenant/remove?id=${options.tenant.id}`)
+            .delete(`${this._baseUrl}/api/tenants/remove?id=${options.tenant.id}`)
             .catch(this._errorService.catchErrorResponse);
     }
 

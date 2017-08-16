@@ -1,4 +1,4 @@
-using IdentityService.Data.Model;
+using IdentityService.Model;
 
 namespace IdentityService.Features.Features
 {

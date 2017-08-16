@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using static IdentityService.Features.DigitalAssets.Constants;
 using IdentityService.Features.Core;
 

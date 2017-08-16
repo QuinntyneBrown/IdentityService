@@ -2,7 +2,7 @@
 import {Observable} from "rxjs/Observable";
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {constants} from "../constants";
-import {Storage} from "./storage";
+import {Storage} from "./storage.service";
 import "rxjs/add/observable/fromPromise";
 import "rxjs/add/operator/map";
 import {Subject} from "rxjs/Subject";
@@ -29,12 +29,14 @@ export class EventHub {
             return this._connectPromise;
 
         this._connectPromise = new Promise((resolve) => {
-            if (this._connectionState === connectionState.disconnected) {
+            if (this._connectionState === connectionState.disconnected) {                
                 this._connection = this._connection || $.hubConnection(constants.HUB_URL);
                 this._connection.qs = { "Bearer": this._storage.get({ name: constants.ACCESS_TOKEN_KEY }) };
                 this._eventHub = this._connection.createHubProxy("eventHub");                
                 this._eventHub.on("events", (value) => this.events.next(value));                                             
-                this._connection.start({ transport: 'webSockets' }).done(resolve);
+                this._connection.start({ transport: 'webSockets' }).done(() => {  
+                    resolve();
+                });
             } else {
                 resolve();
             }

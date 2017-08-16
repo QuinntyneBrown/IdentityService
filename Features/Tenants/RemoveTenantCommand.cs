@@ -1,12 +1,9 @@
-using MediatR;
 using IdentityService.Data;
-using IdentityService.Data.Model;
 using IdentityService.Features.Core;
-using System;
-using System.Collections.Generic;
+using MediatR;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace IdentityService.Features.Tenants
 {
@@ -15,17 +12,17 @@ namespace IdentityService.Features.Tenants
         public class Request : IRequest<Response>
         {
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; } 
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
 
-        public class RemoveTenantHandler : IAsyncRequestHandler<Request, Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public RemoveTenantHandler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, IEventBus bus)
             {
                 _context = context;
-                _cache = cache;
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
@@ -33,11 +30,14 @@ namespace IdentityService.Features.Tenants
                 var tenant = await _context.Tenants.SingleAsync(x=>x.Id == request.Id);
                 tenant.IsDeleted = true;
                 await _context.SaveChangesAsync();
+
+                _bus.Publish(new RemovedTenantMessage(tenant.Id, request.CorrelationId));
+
                 return new Response();
             }
 
             private readonly IdentityServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IEventBus _bus;
         }
     }
 }

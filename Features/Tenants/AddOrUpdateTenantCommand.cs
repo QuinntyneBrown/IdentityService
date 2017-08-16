@@ -1,5 +1,5 @@
 using IdentityService.Data;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using IdentityService.Features.Core;
 using MediatR;
 using System;
@@ -13,16 +13,17 @@ namespace IdentityService.Features.Tenants
         public class Request : IRequest<Response>
         {
             public TenantApiModel Tenant { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, IEventBus bus)
             {
                 _context = context;
-                _cache = cache;
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
@@ -42,11 +43,13 @@ namespace IdentityService.Features.Tenants
 
                 await _context.SaveChangesAsync();
 
+                _bus.Publish(new AddedOrUpdatedTenantMessage(entity,request.CorrelationId));
+
                 return new Response();
             }
 
             private readonly IdentityServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IEventBus _bus;
         }
     }
 }

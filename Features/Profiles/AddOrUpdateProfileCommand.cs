@@ -1,5 +1,5 @@
 using IdentityService.Data;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using IdentityService.Features.Core;
 using MediatR;
 using System;

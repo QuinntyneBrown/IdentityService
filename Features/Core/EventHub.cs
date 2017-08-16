@@ -5,11 +5,12 @@ using System;
 namespace IdentityService.Features.Core
 {
     [HubName("eventHub")]
-    public class EventHub: BaseHub {
+    public class EventHub : BaseHub
+    {
 
         public override Task OnConnected()
         {
             return base.OnConnected();
-        }       
+        }
     }
 }

@@ -1,49 +1,49 @@
 using MediatR;
 using IdentityService.Data;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using IdentityService.Features.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace IdentityService.Features.Users
 {
     public class AddOrUpdateUserCommand
     {
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public UserApiModel User { get; set; }
-			public int? TenantId { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(IdentityServiceContext context, ICache cache)
+            public Handler(IdentityServiceContext context, IEventBus bus)
             {
                 _context = context;
-                _cache = cache;
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
             {
                 var entity = await _context.Users
-                    .SingleOrDefaultAsync(x => x.Id == request.User.Id && x.TenantId == request.TenantId);
+                    .Include(x => x.Tenant)
+                    .SingleOrDefaultAsync(x => x.Id == request.User.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 if (entity == null) _context.Users.Add(entity = new User());
+
                 entity.Name = request.User.Name;
-				entity.TenantId = request.TenantId;
 
                 await _context.SaveChangesAsync();
+
+                _bus.Publish(new AddedOrUpdatedUserMessage(entity,request.CorrelationId,request.TenantUniqueId));
 
                 return new Response();
             }
 
             private readonly IdentityServiceContext _context;
-            private readonly ICache _cache;
+            private readonly IEventBus _bus;
         }
-
     }
-
 }

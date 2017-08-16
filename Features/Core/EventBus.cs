@@ -13,7 +13,7 @@ namespace IdentityService.Features.Core
     {
         public EventBus()
         {
-            _topicClient = TopicClient.CreateFromConnectionString(CoreConfiguration.Config.EventQueueConnectionString, CoreConfiguration.Config.TopicName);
+            _topicClient = TopicClient.CreateFromConnectionString(CoreConfiguration.Config.EventQueueConnectionString);
         }
 
         private static IEventBus _instance;

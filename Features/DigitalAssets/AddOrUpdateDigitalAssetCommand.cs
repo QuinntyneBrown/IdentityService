@@ -1,6 +1,6 @@
 using MediatR;
 using IdentityService.Data;
-using IdentityService.Data.Model;
+using IdentityService.Model;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using IdentityService.Features.Core;

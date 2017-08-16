@@ -1,6 +1,6 @@
-﻿using MediatR;
-using IdentityService.Data;
+﻿using IdentityService.Data;
 using IdentityService.Features.Core;
+using MediatR;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
@@ -8,10 +8,9 @@ namespace IdentityService.Features.Users
 {
     public class GetUserByUsernameQuery
     {
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public string Username { get; set; }
-            public int? TenantId { get; set; }
         }
 
         public class Response
@@ -31,7 +30,7 @@ namespace IdentityService.Features.Users
             {
                 return new Response()
                 {
-                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Username == request.Username && x.TenantId == request.TenantId))
+                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Username == request.Username && x.Tenant.UniqueId == request.TenantUniqueId))
                 };
             }
 

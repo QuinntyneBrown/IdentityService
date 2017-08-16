@@ -1,6 +1,7 @@
 ﻿using IdentityService.Features.Core;
-using IdentityService.Security;
+using IdentityService.Features.Security;
 using MediatR;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
@@ -31,13 +32,12 @@ namespace IdentityService
             config.Filters.Add(new HandleErrorAttribute(container.Resolve<ILoggerFactory>()));
 
             app.UseCors(CorsOptions.AllowAll);
-            
+
             config.SuppressHostPrincipal();
 
             var mediator = container.Resolve<IMediator>();
             Lazy<IAuthConfiguration> lazyAuthConfiguration = UnityConfiguration.GetContainer().Resolve<Lazy<IAuthConfiguration>>();
 
-            
             config.EnableSwagger(c => {
                 c.UseFullTypeNameInSchemaIds();
                 c.SingleApiVersion("v1", "IdentityService");
@@ -50,7 +50,7 @@ namespace IdentityService
 
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new System.Web.Http.AuthorizeAttribute());
 
             var jSettings = new JsonSerializerSettings();
             jSettings.Formatting = Formatting.Indented;
@@ -59,6 +59,8 @@ namespace IdentityService
             config.Formatters.JsonFormatter.SerializerSettings = jSettings;
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => JsonSerializer.Create(jSettings));
 
             config.MapHttpAttributeRoutes();
         }

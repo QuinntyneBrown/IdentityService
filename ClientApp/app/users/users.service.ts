@@ -13,25 +13,25 @@ export class UsersService {
 
     public addOrUpdate(options: { user: User, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/user/add`, options)
+            .post(`${this._baseUrl}/api/users/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public get(): Observable<{ users: Array<User> }> {
         return this._httpClient
-            .get<{ users: Array<User> }>(`${this._baseUrl}/api/user/get`)
+            .get<{ users: Array<User> }>(`${this._baseUrl}/api/users/get`)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public getById(options: { id: number }): Observable<{ user: User }> {
         return this._httpClient
-            .get<{user: User}>(`${this._baseUrl}/api/user/getById?id=${options.id}`)
+            .get<{ user: User }>(`${this._baseUrl}/api/users/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public remove(options: { user: User, correlationId: string }) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/user/remove?id=${options.user.id}`)
+            .delete(`${this._baseUrl}/api/users/remove?id=${options.user.id}`)
             .catch(this._errorService.catchErrorResponse);
     }
 

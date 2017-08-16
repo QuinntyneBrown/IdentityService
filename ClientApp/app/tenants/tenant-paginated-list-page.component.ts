@@ -48,7 +48,7 @@ export class TenantPaginatedListPageComponent {
 
         this.tenants = this.filterTerm != null ? this.filteredTenants : this.unfilteredTenants;
         
-        this._tenantsService.remove({ tenant: $event.detail.tenant, correlationId });
+        this._tenantsService.remove({ tenant: $event.detail.tenant, correlationId }).subscribe();
     }
 
     public tryToEdit($event) {

@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
+import { RouterModule } from "@angular/router";
+
 
 import { FeaturesService } from "./features.service";
 
@@ -21,7 +23,7 @@ const declarables = [
 const providers = [FeaturesService];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, SharedModule],
+    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule, SharedModule],
     exports: [declarables],
     declarations: [declarables],
     providers: providers

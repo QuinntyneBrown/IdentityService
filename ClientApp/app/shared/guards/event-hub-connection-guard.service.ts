@@ -1,6 +1,6 @@
 ﻿import { Injectable } from "@angular/core";
 import { CanLoad } from '@angular/router';
-import { Storage } from "../services/storage";
+import { Storage } from "../services/storage.service";
 import { constants } from "../constants";
 import { EventHub } from "../services/event-hub";
 
