@@ -4,7 +4,6 @@ using System;
 
 namespace IdentityService.Features.Profiles
 {
-
     public class AddedOrUpdatedProfileMessage : BaseEventBusMessage
     {
         public AddedOrUpdatedProfileMessage(Profile profile, Guid correlationId, Guid tenantId)

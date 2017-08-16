@@ -8,12 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AccountsModule } from "./accounts/accounts.module";
 import { FeaturesModule } from "./features/features.module";
+import { SharedModule } from "../app/shared";
 import { SettingsModule } from "./settings/settings.module";
 import { SubscriptionsModule } from "./subscriptions/subscriptions.module";
 import { TenantsModule } from "./tenants/tenants.module";
 import { UsersModule } from "./users/users.module";
-
-import { SharedModule } from "../app/shared";
 
 import { AppComponent } from './app.component';
 
@@ -27,28 +26,24 @@ const declarables = [
     routedComponents
 ];
 
-const providers = [];
-
 @NgModule({
-    imports: [
-        RoutingModule,
-        BrowserModule,
-        HttpModule,
+    imports: [        
+        BrowserModule,        
         CommonModule,
         FormsModule,
+        HttpModule,
         ReactiveFormsModule,
         RouterModule,
-
+        
         AccountsModule,
         FeaturesModule,
+        RoutingModule,
         SettingsModule,
+        SharedModule,
         SubscriptionsModule,
         TenantsModule,
-        UsersModule,
-
-        SharedModule
+        UsersModule        
     ],
-    providers: providers,
     declarations: [declarables],
     exports: [declarables],
     bootstrap: [AppComponent]

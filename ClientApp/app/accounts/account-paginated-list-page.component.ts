@@ -74,6 +74,6 @@ export class AccountPaginatedListPageComponent {
     public accounts: Array<any> = [];
     public unfilteredAccounts: Array<any> = [];
     public get filteredAccounts() {
-        return this.unfilteredAccounts.filter((x) => x.email.indexOf(this.filterTerm) > -1);
+        return this.unfilteredAccounts.filter((x) => x.name.indexOf(this.filterTerm) > -1);
     }
 }
