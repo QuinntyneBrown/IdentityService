@@ -10,8 +10,9 @@ import {
 
 import {Storage} from "../services/storage.service";
 import {LoginRedirectService} from "../services/login-redirect.service";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {constants} from "../constants";
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {

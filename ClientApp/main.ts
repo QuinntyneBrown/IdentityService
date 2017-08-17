@@ -1,5 +1,5 @@
 ﻿import {enableProdMode} from "@angular/core";
-import {AppModule} from "./app";
+import {AppModule} from "./app/app.module";
 import {environment} from "./app/environment";
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 

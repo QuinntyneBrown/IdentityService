@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Tenant } from "./tenant.model";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../shared/services/error.service";
 
 @Injectable()

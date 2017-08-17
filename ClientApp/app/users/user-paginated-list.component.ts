@@ -2,6 +2,7 @@ import {Component,Input, Output, EventEmitter, NgZone} from "@angular/core";
 import {toPageListFromInMemory,IPagedList} from "../shared/components/pager.component";
 import {Observable} from "rxjs/Observable";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     templateUrl: "./user-paginated-list.component.html",
