@@ -8,9 +8,11 @@ namespace IdentityService.Features.Users
 
         public int? TenantId { get; set; }
 
-        public string Name { get; set; }
-
         public string Username { get; set; }
+
+        public string NewPassword { get; set; }
+
+        public string ConfirmNewPassword { get; set; }
 
         public static TModel FromUser<TModel>(User user) where
             TModel : UserApiModel, new()

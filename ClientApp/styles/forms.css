@@ -1,4 +1,8 @@
-﻿input {
+﻿:host > span {
+    display: block;
+}
+
+input {
     display: block;
     margin: 10px 0px 10px 0px;
     padding: 0px 10px 0px 10px;
@@ -6,13 +10,24 @@
     font-size: 1.125em;
     line-height: 2.25em;
     border: 0.5px solid #888;
-    border-radius:0px;
+    border-radius: 0px;
+}
+
+select {
+    display: block;
+    margin: 10px 0px 10px 0px;
+    padding: 0px 10px 0px 10px;
+    width: calc(100%);
+    font-size: 1.125em;
+    height: 2.25em;
+    border: 0.5px solid #888;
+    border-radius: 0px;
 }
 
 input[type=checkbox] {
     display: inline-block;
     width: 25px;
-    border-radius:0px;
+    border-radius: 0px;
 }
 
 textarea {
@@ -31,7 +46,7 @@ textarea {
 }
 
 form {
-    width:100%;
+    width: 100%;
 }
 
 button {
@@ -47,8 +62,19 @@ button {
     background-color: rgb(0, 88, 173);
     color: #fff;
     font-weight: 100;
+    margin: 10px 0px 0px 0px;
 }
 
-button:hover {
+    button:hover {
+        color: #333;
+    }
+
+label a {
+    font-size: 0.8em;
+    opacity: 0.75;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: none;
     color: #333;
 }

@@ -28,6 +28,9 @@ export class UserEditComponent {
     @Output()
     public tryToSave: EventEmitter<any>;
 
+    @Input()
+    public tenants: Array<any> = [];
+
     private _user: any = {};
 
     @Input("user")
@@ -35,13 +38,17 @@ export class UserEditComponent {
         this._user = value;
 
         this.form.patchValue({
-            id: this._user.id,
-            name: this._user.name,
+            id: 0,
+            username: this._user.username,
+            tenantId: this._user.tenantId
         });
     }
    
     public form = new FormGroup({
         id: new FormControl(0, []),
-        name: new FormControl('', [Validators.required])
+        username: new FormControl('', [Validators.required]),
+        tenantId: new FormControl('', [Validators.required]),
+        newPassword: new FormControl(''),
+        confirmNewPassword: new FormControl('')
     });
 }

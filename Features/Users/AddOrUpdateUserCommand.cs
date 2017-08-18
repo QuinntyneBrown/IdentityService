@@ -33,7 +33,7 @@ namespace IdentityService.Features.Users
                     .SingleOrDefaultAsync(x => x.Id == request.User.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 if (entity == null) _context.Users.Add(entity = new User());
 
-                entity.Name = request.User.Name;
+                entity.Username = request.User.Username;
 
                 await _context.SaveChangesAsync();
 

@@ -14,6 +14,7 @@ import { UserEditPageComponent } from "./users/user-edit-page.component";
 export const routes: Routes = [
     {
         path: '',
+        pathMatch:'full',
         component: TenantPaginatedListPageComponent,
         canActivate: [
             TenantGuardService,
@@ -85,7 +86,7 @@ export const routes: Routes = [
             AuthGuardService,
             EventHubConnectionGuardService
         ]
-    },
+    }
 ];
 
 export const RoutingModule = RouterModule.forRoot([

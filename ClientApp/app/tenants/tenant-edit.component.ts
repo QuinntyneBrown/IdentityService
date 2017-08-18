@@ -37,11 +37,13 @@ export class TenantEditComponent {
         this.form.patchValue({
             id: this._tenant.id,
             name: this._tenant.name,
+            uniqueId: this._tenant.uniqueId
         });
     }
    
     public form = new FormGroup({
         id: new FormControl(0, []),
-        name: new FormControl('', [Validators.required])
+        name: new FormControl('', [Validators.required]),
+        uniqueId: new FormControl('',[Validators.required])
     });
 }
