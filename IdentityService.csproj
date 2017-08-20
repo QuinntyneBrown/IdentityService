@@ -501,6 +501,8 @@
     <Compile Include="Data\Migrations\RoleConfiguration.cs" />
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
     <Compile Include="Data\Migrations\UserConfiguration.cs" />
+    <Compile Include="Features\Core\BaseAuthenticatedRequest.cs" />
+    <Compile Include="Features\Security\ClaimTypes.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\DigitalAsset.cs" />
     <Compile Include="Model\Feature.cs" />
@@ -649,6 +651,7 @@
     <Compile Include="Features\Users\UsersEventBusMessages.cs" />
     <Compile Include="Features\Users\AddedOrUpdatedUserMessage.cs" />
     <Compile Include="Features\Users\RemovedUserMessage.cs" />
+    <Compile Include="Features\Users\ChangePasswordCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\accounts\account-edit-page.component.ts">

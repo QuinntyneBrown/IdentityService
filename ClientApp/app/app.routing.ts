@@ -10,35 +10,30 @@ import { SetTenantPageComponent } from "./tenants/set-tenant-page.component";
 
 import { UserPaginatedListPageComponent } from "./users/user-paginated-list-page.component";
 import { UserEditPageComponent } from "./users/user-edit-page.component";
+import { ChangePasswordPageComponent } from "./users/change-password-page.component";
+
+const canActivate = [
+    TenantGuardService,
+    AuthGuardService,
+    EventHubConnectionGuardService
+];
 
 export const routes: Routes = [
     {
         path: '',
         pathMatch:'full',
         component: TenantPaginatedListPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     },
     {
         path: 'tenants',
         component: TenantPaginatedListPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     },
     {
         path: 'tenants/create',
         component: TenantEditPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     },
     {
         path: 'tenants/set',
@@ -47,11 +42,7 @@ export const routes: Routes = [
     {
         path: 'tenants/:id',
         component: TenantEditPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     },
     {
         path: 'login',
@@ -63,29 +54,22 @@ export const routes: Routes = [
     {
         path: 'users',
         component: UserPaginatedListPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     },
     {
         path: 'users/create',
         component: UserEditPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
+    },
+    {
+        path: 'users/:id/changePassword',
+        component: ChangePasswordPageComponent,
+        canActivate
     },
     {
         path: 'users/:id',
         component: UserEditPageComponent,
-        canActivate: [
-            TenantGuardService,
-            AuthGuardService,
-            EventHubConnectionGuardService
-        ]
+        canActivate
     }
 ];
 
