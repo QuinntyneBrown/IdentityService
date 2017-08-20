@@ -397,6 +397,12 @@
     <Content Include="ClientApp\app\tenants\tenants-left-nav.component.css">
       <DependentUpon>tenants-left-nav.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\users\change-password-page.component.css">
+      <DependentUpon>change-password-page.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\users\change-password.component.css">
+      <DependentUpon>change-password.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\users\login-page.component.css">
       <DependentUpon>login-page.component.html</DependentUpon>
     </Content>
@@ -477,6 +483,8 @@
     <None Include="Properties\PublishProfiles\identity-service - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\identity-service - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\identity-service - Web Deploy.pubxml" />
+    <Content Include="ClientApp\app\users\change-password-page.component.html" />
+    <Content Include="ClientApp\app\users\change-password.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\jquery.signalR-2.2.0.js" />
@@ -772,6 +780,12 @@
     <TypeScriptCompile Include="ClientApp\app\tenants\tenants-left-nav.component.ts">
       <DependentUpon>tenants-left-nav.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\change-password-page.component.ts">
+      <DependentUpon>change-password-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\change-password.component.ts">
+      <DependentUpon>change-password.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\users\login-page.component.ts">
       <DependentUpon>login-page.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -848,7 +862,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62232</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62232/</IISUrl>
+          <IISUrl>http://localhost:62233/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
