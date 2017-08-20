@@ -19,7 +19,7 @@ export class LoginRedirectService {
     }
 
     public redirectToSetTenant() {
-        this._router.navigate(["/tenants/set"]);
+        this._router.navigateByUrl("/tenants/set");
     }
 
     public redirectPreLogin() {

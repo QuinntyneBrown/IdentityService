@@ -39,8 +39,8 @@ export class LoginPageComponent implements OnInit {
         
         this._storage.put({ name: constants.LOGIN_CREDENTIALS, value: $event.value.rememberMe ? $event.value : null });
 
-        await this._authenticationService.tryToLogin({ username: $event.value.username, password: $event.value.password }).toPromise();
-
-        this._loginRedirectService.redirectPreLogin();
+        await this._authenticationService.tryToLogin({ username: $event.value.username, password: $event.value.password }).subscribe(x => {
+            this._loginRedirectService.redirectPreLogin();
+        });        
     }
 }

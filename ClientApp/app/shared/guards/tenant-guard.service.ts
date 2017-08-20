@@ -27,9 +27,11 @@ export class TenantGuardService implements CanActivate {
     ): Observable<boolean> {
         const tenant = this._storage.get({ name: constants.TENANT });
 
-        if (tenant)
-            return Observable.of(true);
 
+
+        if (tenant)
+            return Observable.of(true);            
+        
         this._loginRedirectService.lastPath = state.url;
         this._loginRedirectService.redirectToSetTenant();
 

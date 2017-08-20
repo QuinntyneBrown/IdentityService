@@ -41,6 +41,10 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'tenants/set',
+        component: SetTenantPageComponent
+    },
+    {
         path: 'tenants/:id',
         component: TenantEditPageComponent,
         canActivate: [
@@ -55,10 +59,6 @@ export const routes: Routes = [
         canActivate: [
             TenantGuardService
         ]
-    },
-    {
-        path: 'tenants/set',
-        component: SetTenantPageComponent
     },
     {
         path: 'users',
