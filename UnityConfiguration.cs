@@ -1,4 +1,5 @@
 using IdentityService.Features.Security;
+using IdentityService.Features.Users;
 using MediatR;
 using Microsoft.Practices.Unity;
 using System;
@@ -23,6 +24,8 @@ namespace IdentityService
             container.RegisterType<Features.Tenants.ITenantsEventBusMessageHandler, Features.Tenants.TenantsEventBusMessageHandler>();
             container.RegisterType<Features.Users.IUsersEventBusMessageHandler, Features.Users.UsersEventBusMessageHandler>();
 
+            container.RegisterType<IChangePasswordCommandValidator, ChangePasswordCommandValidator>();
+
             container.RegisterType<HttpClient>(
                 new ContainerControlledLifetimeManager(),
                 new InjectionFactory(x => new HttpClient()));
@@ -44,6 +47,7 @@ namespace IdentityService
                 && x.Name.EndsWith("Hub") == false
                 && x.Name.EndsWith("Message") == false
                 && x.Name == "MemoryCache" == false
+                && x.Name.EndsWith("Validator") == false
                 && x.Name.Contains("EventBusMessageHandler") == false
                 && x.FullName.Contains("IdentityService.Model") == false)
                 .ToList();

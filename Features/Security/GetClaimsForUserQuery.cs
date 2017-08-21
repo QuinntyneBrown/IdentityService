@@ -39,11 +39,17 @@ namespace IdentityService.Features.Security
                     .Include(x=>x.Tenant)
                     .SingleAsync(x => x.Username == message.Username && x.Tenant.UniqueId == message.TenantUniqueId);
 
-                claims.Add(new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", message.Username));
+                claims.Add(new Claim(ClaimTypes.Name, message.Username));
+
+                claims.Add(new Claim(ClaimTypes.TenantUniqueId, $"{user.Tenant.UniqueId}"));
+
+                claims.Add(new Claim(ClaimTypes.UserId, $"{user.Id}"));
+
+                claims.Add(new Claim(ClaimTypes.TenantId, $"{user.Tenant.Id}"));
 
                 foreach (var role in user.Roles.Select(x => x.Name))
                 {
-                    claims.Add(new Claim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", role));
+                    claims.Add(new Claim(ClaimTypes.Role, role));
                 }
 
                 return new Response()

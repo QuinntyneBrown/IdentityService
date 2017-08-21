@@ -39,7 +39,11 @@ namespace IdentityService.Features.Users
         [HttpDelete]
         [ResponseType(typeof(RemoveUserCommand.Response))]
         public async Task<IHttpActionResult> Remove([FromUri]RemoveUserCommand.Request request) => Ok(await Send(request));
-    
+
+        [Route("changePassword")]
+        [HttpPut]
+        [ResponseType(typeof(ChangePasswordCommand.Response))]
+        public async Task<IHttpActionResult> ChangePassword([FromBody]ChangePasswordCommand.Request request) => Ok(await Send(request));
 
         [Route("current")]
         [HttpGet]

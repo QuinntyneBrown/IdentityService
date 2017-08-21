@@ -74,6 +74,9 @@
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -438,6 +441,7 @@
     <Content Include="ClientApp\styles\left-nav.css" />
     <Content Include="ClientApp\styles\list-item.css" />
     <Content Include="ClientApp\styles\list.css" />
+    <Content Include="ClientApp\styles\page.css" />
     <Content Include="dist\app.js" />
     <Content Include="dist\vendor.js" />
     <Content Include="index.html" />
@@ -503,6 +507,7 @@
     <Compile Include="Data\Migrations\UserConfiguration.cs" />
     <Compile Include="Features\Core\BaseAuthenticatedRequest.cs" />
     <Compile Include="Features\Security\ClaimTypes.cs" />
+    <Compile Include="Features\Users\ChangePasswordCommandValidator.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\DigitalAsset.cs" />
     <Compile Include="Model\Feature.cs" />
@@ -741,6 +746,7 @@
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck-out.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\validators\change-password-validator.ts" />
     <TypeScriptCompile Include="ClientApp\app\subscriptions\subscription-edit-page.component.ts">
       <DependentUpon>subscription-edit-page.component.html</DependentUpon>
     </TypeScriptCompile>

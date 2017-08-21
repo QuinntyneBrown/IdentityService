@@ -83,5 +83,6 @@ export const routedComponents = [
     TenantEditPageComponent,
     TenantPaginatedListPageComponent,
     UserEditPageComponent,
-    UserPaginatedListPageComponent
+    UserPaginatedListPageComponent,
+    ChangePasswordPageComponent
 ];

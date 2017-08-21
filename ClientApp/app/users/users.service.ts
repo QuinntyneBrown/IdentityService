@@ -36,5 +36,11 @@ export class UsersService {
             .catch(this._errorService.catchErrorResponse);
     }
 
+    public changePassword(options: { user: User, password:string, confirmPassword: string }) {
+        return this._httpClient
+            .put(`${this._baseUrl}/api/users/changePassword`, options)
+            .catch(this._errorService.catchErrorResponse);            
+    }
+
     public get _baseUrl() { return ""; }
 }

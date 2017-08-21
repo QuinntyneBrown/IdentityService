@@ -7,21 +7,30 @@ namespace IdentityService.Features.Core
     public class BaseAuthenticatedRequest: BaseRequest
     {
         public ClaimsPrincipal ClaimsPrincipal { get; set; }
-        public int UserId { get
+
+        public int? UserId { get
             {
+                if (ClaimsPrincipal == null)
+                    return null;
+
                 return Convert.ToInt16(ClaimsPrincipal.Claims.Single(x => x.Type == Security.ClaimTypes.UserId).Value);
             }
         }
 
         public string Username
         {
-            get { return ClaimsPrincipal.Identity.Name; }        
+            get {                
+                return ClaimsPrincipal?.Identity.Name;
+            }        
         }
 
-        public int TenantId
+        public int? TenantId
         {
             get
             {
+                if (ClaimsPrincipal == null)
+                    return null;
+
                 return Convert.ToInt16(ClaimsPrincipal.Claims.Single(x => x.Type == Security.ClaimTypes.TenantId).Value);
             }
         }
