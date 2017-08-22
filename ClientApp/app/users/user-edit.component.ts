@@ -36,9 +36,9 @@ export class UserEditComponent {
     @Input("user")
     public set user(value) {
         this._user = value;
-
+        
         this.form.patchValue({
-            id: 0,
+            id: this._user.id,
             username: this._user.username,
             tenantId: this._user.tenantId
         });

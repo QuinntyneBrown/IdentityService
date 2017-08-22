@@ -1,5 +1,7 @@
 <span (click)="select.emit({ detail: { user: user} })">{{ user.username }}</span>
 <div>
+    <span (click)="changePassword.emit({ detail: { user: user} })">CHANGE PASSWORD</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
     <span (click)="edit.emit({ detail: { user: user} })">EDIT</span>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <span (click)="delete.emit({ detail: { user: user} })">DELETE</span>

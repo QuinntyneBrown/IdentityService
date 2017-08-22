@@ -11,7 +11,8 @@ import {Component,Input,Output,EventEmitter} from "@angular/core";
 export class UserListItemComponent {  
     constructor() {
         this.edit = new EventEmitter();
-        this.delete = new EventEmitter();		
+        this.delete = new EventEmitter();	
+        this.changePassword = new EventEmitter();
     }
       
     @Input()
@@ -22,4 +23,7 @@ export class UserListItemComponent {
 
     @Output()
     public delete: EventEmitter<any>;        
+
+    @Output()
+    public changePassword: EventEmitter<any>;
 }

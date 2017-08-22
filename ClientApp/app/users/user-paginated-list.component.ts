@@ -18,6 +18,7 @@ export class UserPaginatedListComponent {
         this.edit = new EventEmitter();
         this.delete = new EventEmitter();
         this.filterKeyUp = new EventEmitter();
+        this.changePassword = new EventEmitter();
         this.pagedList = toPageListFromInMemory([], this.pageNumber, this.pageSize);
     }
 
@@ -47,6 +48,9 @@ export class UserPaginatedListComponent {
 
     @Output()
     public delete: EventEmitter<any>;
+
+    @Output()
+    public changePassword: EventEmitter<any>;
     
     @Output()
     public filterKeyUp: EventEmitter<any>;

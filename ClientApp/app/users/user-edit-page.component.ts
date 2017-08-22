@@ -34,7 +34,7 @@ export class UserEditPageComponent {
 
     public tryToSave($event) {
         const correlationId = this._correlationIdsList.newId();
-        this._usersService.addOrUpdate({ user: $event.detail.user, correlationId });
+        this._usersService.addOrUpdate({ user: $event.detail.user, correlationId }).subscribe();
         this._router.navigateByUrl("/users");
     }
 

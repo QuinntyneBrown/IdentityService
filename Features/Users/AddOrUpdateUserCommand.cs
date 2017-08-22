@@ -30,10 +30,19 @@ namespace IdentityService.Features.Users
             {
                 var entity = await _context.Users
                     .Include(x => x.Tenant)
-                    .SingleOrDefaultAsync(x => x.Id == request.User.Id && x.Tenant.UniqueId == request.TenantUniqueId);
-                if (entity == null) _context.Users.Add(entity = new User());
+                    .SingleOrDefaultAsync(x => x.Id == request.User.Id);
+
+                if (entity == null)
+                {
+                    var tenant = await _context.Tenants.SingleAsync(x => x.Id == request.User.TenantId);
+                    _context.Users.Add(entity = new User() { TenantId = tenant.Id });
+                }
+
+                entity.Name = request.User.Username;
 
                 entity.Username = request.User.Username;
+
+                entity.TenantId = request.User.TenantId;
 
                 await _context.SaveChangesAsync();
 

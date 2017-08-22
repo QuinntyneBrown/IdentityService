@@ -24,7 +24,7 @@ export class TenantEditPageComponent {
 
     public tryToSave($event) {
         const correlationId = this._correlationIdsList.newId();
-        this._tenantsService.addOrUpdate({ tenant: $event.detail.tenant, correlationId });
+        this._tenantsService.addOrUpdate({ tenant: $event.detail.tenant, correlationId }).subscribe();
         this._router.navigateByUrl("/tenants");
     }
 

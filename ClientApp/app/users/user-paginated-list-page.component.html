@@ -1,5 +1,6 @@
-<ce-user-paginated-list [users]="users"                           
-                           (delete)="tryToDelete($event)"
-                           (edit)="tryToEdit($event)"
-                           (filterKeyUp)="handleUsersFilterKeyUp($event)">
+<ce-user-paginated-list [users]="users"              
+                        (changePassword)="tryToChangePassword($event)"
+                        (delete)="tryToDelete($event)"
+                        (edit)="tryToEdit($event)"
+                        (filterKeyUp)="handleUsersFilterKeyUp($event)">
 </ce-user-paginated-list>

@@ -29,7 +29,7 @@ namespace IdentityService.Features.Users
             {                
                 return new Response()
                 {
-                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId))
+                    User = UserApiModel.FromUser(await _context.Users.SingleAsync(x=>x.Id == request.Id))
                 };
             }
 

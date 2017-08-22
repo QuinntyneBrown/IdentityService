@@ -2,25 +2,14 @@
 
 <form novalidate [formGroup]="form">
 
-    <ce-tabs>
-        <ce-tab-title>General</ce-tab-title>
-        <ce-tab-content>
-            <label>Tenant</label>
-            <select formControlName="tenantId">
-                <option *ngFor="let tenant of tenants" value={{tenant.id}}>
-                    {{tenant.name}}
-                </option>
-            </select>
-            <label>Username</label>
-            <input type="text" placeholder="Username" id="username" formControlName="username" />
-
-            <label>New Password</label>
-            <input type="password" placeholder="New Password" id="newPassword" formControlName="newPassword" />
-
-            <label>Confirm New Password</label>
-            <input type="password" placeholder="Confirm New Password" id="confirmNewPassword" formControlName="confirmNewPassword" />
-        </ce-tab-content>
-    </ce-tabs>
+    <label>Tenant</label>
+    <select formControlName="tenantId">
+        <option *ngFor="let tenant of tenants" value={{tenant.id}}>
+            {{tenant.name}}
+        </option>
+    </select>
+    <label>Username</label>
+    <input type="text" placeholder="Username" id="username" formControlName="username" />
 
     <button type="submit" (click)="tryToSave.emit({ detail:{ user: form.value } })">Save</button>
 

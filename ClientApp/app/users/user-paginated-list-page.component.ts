@@ -55,6 +55,10 @@ export class UserPaginatedListPageComponent {
         this._router.navigate(["users", $event.detail.user.id]);
     }
 
+    public tryToChangePassword($event) {
+        this._router.navigate(["users", $event.detail.user.id,"changePassword"]);
+    }
+
     public handleUsersFilterKeyUp($event) {
         this.filterTerm = $event.detail.value;
         this.pageNumber = 1;

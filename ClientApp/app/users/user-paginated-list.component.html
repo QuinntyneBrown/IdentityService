@@ -8,7 +8,8 @@
 <ce-user-list-item *ngFor="let user of pagedList.data"
                       [user]="user"
                       (edit)="edit.emit($event)"
-                      (delete)="delete.emit($event)">
+                      (delete)="delete.emit($event)"
+                   (changePassword)="changePassword.emit($event)">
 </ce-user-list-item>
 <ce-pager [pageNumber]="pageNumber" 
           [totalPages]="pagedList.totalPages" 

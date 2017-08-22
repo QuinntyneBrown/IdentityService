@@ -2,17 +2,12 @@
 
 <form novalidate [formGroup]="form">
 
-    <ce-tabs>
-        <ce-tab-title>General</ce-tab-title>
-        <ce-tab-content>
-            <label>Name</label>
-            <input type="text" placeholder="Name" id="name" formControlName="name" />
+    <label>Name</label>
+    <input type="text" placeholder="Name" id="name" formControlName="name" />
 
-            <label>Unique Id</label>
-            <input type="text" placeholder="Unique Id" id="uniqueId" formControlName="uniqueId" disabled />
-        </ce-tab-content>
-    </ce-tabs>
-
+    <label>Unique Id</label>
+    <input type="text" placeholder="Unique Id" id="uniqueId" formControlName="uniqueId" />
+    
     <button type="submit" (click)="tryToSave.emit({ detail:{ tenant: form.value } })">Save</button>
 
 </form> 

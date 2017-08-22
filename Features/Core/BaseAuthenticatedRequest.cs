@@ -8,12 +8,9 @@ namespace IdentityService.Features.Core
     {
         public ClaimsPrincipal ClaimsPrincipal { get; set; }
 
-        public int? UserId { get
+        public int UserId { get
             {
-                if (ClaimsPrincipal == null)
-                    return null;
-
-                return Convert.ToInt16(ClaimsPrincipal.Claims.Single(x => x.Type == Security.ClaimTypes.UserId).Value);
+                return Convert.ToInt16(ClaimsPrincipal?.Claims.Single(x => x.Type == Security.ClaimTypes.UserId).Value);
             }
         }
 
@@ -24,14 +21,11 @@ namespace IdentityService.Features.Core
             }        
         }
 
-        public int? TenantId
+        public int TenantId
         {
             get
             {
-                if (ClaimsPrincipal == null)
-                    return null;
-
-                return Convert.ToInt16(ClaimsPrincipal.Claims.Single(x => x.Type == Security.ClaimTypes.TenantId).Value);
+                return Convert.ToInt16(ClaimsPrincipal?.Claims.Single(x => x.Type == Security.ClaimTypes.TenantId).Value);
             }
         }
     }

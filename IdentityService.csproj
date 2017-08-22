@@ -508,6 +508,7 @@
     <Compile Include="Features\Core\BaseAuthenticatedRequest.cs" />
     <Compile Include="Features\Security\ClaimTypes.cs" />
     <Compile Include="Features\Users\ChangePasswordCommandValidator.cs" />
+    <Compile Include="Features\Users\PasswordChanagedMessage.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\DigitalAsset.cs" />
     <Compile Include="Model\Feature.cs" />
