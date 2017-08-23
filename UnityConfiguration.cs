@@ -1,3 +1,4 @@
+using IdentityService.Features.Core;
 using IdentityService.Features.Security;
 using IdentityService.Features.Users;
 using MediatR;
@@ -30,6 +31,10 @@ namespace IdentityService
                 new ContainerControlledLifetimeManager(),
                 new InjectionFactory(x => new HttpClient()));
 
+            container.RegisterType<ICache>(
+                new ContainerControlledLifetimeManager(),
+                new InjectionFactory(x => new RedisCache()));
+
             container.RegisterInstance(AuthConfiguration.LazyConfig);
 
             return container;
@@ -46,7 +51,7 @@ namespace IdentityService
                 && x.Name.Contains("Attribute") == false
                 && x.Name.EndsWith("Hub") == false
                 && x.Name.EndsWith("Message") == false
-                && x.Name == "MemoryCache" == false
+                && x.Name.EndsWith("Cache") == false
                 && x.Name.EndsWith("Validator") == false
                 && x.Name.Contains("EventBusMessageHandler") == false
                 && x.FullName.Contains("IdentityService.Model") == false)
