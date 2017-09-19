@@ -42,6 +42,15 @@ namespace IdentityService.Features.Tenants
             return Ok(await _mediator.Send(request));
         }
 
+        [Route("exists")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(TenantExistsQuery.Response))]
+        public async Task<IHttpActionResult> Exists([FromUri]TenantExistsQuery.Request request)
+        {            
+            return Ok(await _mediator.Send(request));
+        }
+
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(GetTenantByIdQuery.Response))]

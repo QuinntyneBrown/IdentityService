@@ -15,7 +15,7 @@ namespace IdentityService.Model
         [ForeignKey("Tenant")]
         public int? TenantId { get; set; }
 
-        [Index("UserNameIndex", IsUnique = true)]
+        [Index("UserNameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]
         [StringLength(MaxStringLength)]
         public string Name { get; set; }
